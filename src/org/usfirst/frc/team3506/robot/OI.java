@@ -3,7 +3,10 @@ package org.usfirst.frc.team3506.robot;
 import static org.usfirst.frc.team3506.robot.RobotMap.LEFT_JOYSTICK;
 import static org.usfirst.frc.team3506.robot.RobotMap.RIGHT_JOYSTICK;
 
-import org.usfirst.frc.team3506.robot.commands.Turn360Command;
+import org.usfirst.frc.team3506.robot.commands.DriveStraightCommand;
+import org.usfirst.frc.team3506.robot.commands.TestCommandGroup;
+import org.usfirst.frc.team3506.robot.commands.TurnLeftCommand;
+import org.usfirst.frc.team3506.robot.commands.TurnRightCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -49,7 +52,16 @@ public class OI {
 		rightJoy = new Joystick(RIGHT_JOYSTICK);
 		
 		JoystickButton button10 = new JoystickButton(leftJoy, 10);
-		button10.whenPressed(new Turn360Command());
+		button10.whenPressed(new TurnRightCommand());
+		
+		JoystickButton button7 = new JoystickButton(leftJoy, 7);
+		button7.whenPressed(new TurnLeftCommand());
+		
+		JoystickButton button3 = new JoystickButton(leftJoy, 3);
+		button3.whenPressed(new DriveStraightCommand());
+		
+		JoystickButton button2 = new JoystickButton(leftJoy, 2);
+		button2.whenPressed(new TestCommandGroup());
 	}
 	
 	public Joystick getLeftJoy() {

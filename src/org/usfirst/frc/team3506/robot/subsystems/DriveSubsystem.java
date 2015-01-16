@@ -45,9 +45,18 @@ public class DriveSubsystem extends Subsystem {
 		resetGyro();
 	}
 
-	public void turn() {
+	public void rightTurn() {
 		mecanumDrive.mecanumDrive_Cartesian(0, 0, 0.5, gyro.getAngle());
 	}
+	
+	public void leftTurn() {
+		mecanumDrive.mecanumDrive_Cartesian(0, 0, -0.5, gyro.getAngle());
+	}
+	
+	public void driveStraight() {
+		mecanumDrive.mecanumDrive_Cartesian(0, -0.5, 0, gyro.getAngle());
+	}
+	
 	
 	public void resetGyro() {
 		gyro.reset();

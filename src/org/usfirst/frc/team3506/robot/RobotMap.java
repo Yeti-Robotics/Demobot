@@ -24,13 +24,14 @@ public class RobotMap {
 	public final static int RIGHT_BACK_PORT = 1;
 	public final static int RIGHT_FRONT_PORT = 0;
 	
+	
 	// Joystick ports
 	public static final int LEFT_JOYSTICK = 1;
 	public static final int RIGHT_JOYSTICK = 2;
 	
 	 // Gyro Port
 	public static final int GYRO_PORT = 0;
-	
-	
+	public static final double TURN_TIMEOUT = 0.75;
+	public static final double DRIVE_STRAIGHT_TIMEOUT= 2;	
 	
 }

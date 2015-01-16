@@ -22,7 +22,7 @@ public class Turn360Command extends Command {
 	 */
 	@Override
 	protected void initialize() {
-		setTimeout(1);
+		setTimeout(2);
 	}
 
 	/* (non-Javadoc)
@@ -30,7 +30,7 @@ public class Turn360Command extends Command {
 	 */
 	@Override
 	protected void execute() {
-		Robot.drive.turn();
+		Robot.drive.rightTurn();
 	}
 
 	/* (non-Javadoc)
