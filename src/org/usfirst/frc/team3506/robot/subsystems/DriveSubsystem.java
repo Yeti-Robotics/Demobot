@@ -11,7 +11,6 @@ import org.usfirst.frc.team3506.robot.commands.UserDriveCommand;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * @author acampbell
@@ -46,19 +45,19 @@ public class DriveSubsystem extends Subsystem {
 	}
 
 	public void rightTurn() {
-		mecanumDrive.mecanumDrive_Cartesian(0, 0, 0.5, gyro.getAngle());
+		mecanumDrive.mecanumDrive_Cartesian(0, 0, TURN_RIGHT_SPEED, gyro.getAngle());
 	}
 	
 	public void leftTurn() {
-		mecanumDrive.mecanumDrive_Cartesian(0, 0, -0.5, gyro.getAngle());
+		mecanumDrive.mecanumDrive_Cartesian(0, 0, TURN_LEFT_SPEED, gyro.getAngle());
 	}
 	
 	public void driveStraight() {
-		mecanumDrive.mecanumDrive_Cartesian(0, -0.5, 0, gyro.getAngle());
+		mecanumDrive.mecanumDrive_Cartesian(0, FORWARD_SPEED, 0, gyro.getAngle());
 	}
 	
 	public void resetGyro() {
-	//	gyro.reset();
+		gyro.reset();
 	}
 	
 	public void stopMotors() {

@@ -3,22 +3,27 @@ package org.usfirst.frc.team3506.robot.commands;
 import org.usfirst.frc.team3506.robot.Robot;
 import org.usfirst.frc.team3506.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
 public class TurnLeftCommand extends Command {
+	
+	Gyro gyro;
 
 	public TurnLeftCommand() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		requires(Robot.drive);
+		requires(Robot.gyroSubsystem);
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		setTimeout(RobotMap.TURN_TIMEOUT);
+		Robot.gyroSubsystem.resetGyro();
+		gyro = Robot.gyroSubsystem.getGyro();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -28,7 +33,8 @@ public class TurnLeftCommand extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return isTimedOut();
+		double angle = Math.abs(gyro.getAngle());
+		return (angle <= RobotMap.LEFT_STOP_ANGLE && angle > 10);
 	}
 
 	// Called once after isFinished returns true

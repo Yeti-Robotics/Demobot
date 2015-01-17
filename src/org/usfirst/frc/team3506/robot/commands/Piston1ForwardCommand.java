@@ -1,7 +1,5 @@
 package org.usfirst.frc.team3506.robot.commands;
 
-import org.usfirst.frc.team3506.robot.subsystems.Solenoid1Subsystem;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team3506.robot.*;
