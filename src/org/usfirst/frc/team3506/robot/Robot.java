@@ -1,6 +1,9 @@
 
 package org.usfirst.frc.team3506.robot;
 
+import org.usfirst.frc.team3506.robot.commands.DriveStraightCommand;
+import org.usfirst.frc.team3506.robot.commands.TurnLeftCommand;
+import org.usfirst.frc.team3506.robot.commands.TurnRightCommand;
 import org.usfirst.frc.team3506.robot.commands.UserDriveCommand;
 import org.usfirst.frc.team3506.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.GyroSubsystem;
@@ -11,6 +14,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -41,6 +45,10 @@ public class Robot extends IterativeRobot {
 		compressor.setClosedLoopControl(true);
 		//this should be last
 		oi = new OI();
+
+        SmartDashboard.putData(new TurnRightCommand());
+        SmartDashboard.putData(new TurnLeftCommand());
+        SmartDashboard.putData(new DriveStraightCommand());
     }
 	
 	public void disabledPeriodic() {
@@ -90,6 +98,7 @@ public class Robot extends IterativeRobot {
      */
     public void testPeriodic() {
         LiveWindow.run();
+        log();
     }
     
     private void log() {

@@ -41,7 +41,7 @@ public class RobotMap {
 	
 	// Angles
 	public final static double RIGHT_STOP_ANGLE = 90;
-	public final static double LEFT_STOP_ANGLE = -270;
+	public final static double LEFT_STOP_ANGLE = 270;
 	
 	// Speed
 	public final static double TURN_RIGHT_SPEED = 0.3;
