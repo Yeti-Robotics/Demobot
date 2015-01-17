@@ -4,14 +4,14 @@ import edu.wpi.first.wpilibj.command.Command;
 
 import org.usfirst.frc.team3506.robot.*;
 
-public class Piston1ForwardCommand extends Command
+public class Piston2ForwardCommand extends Command
 {
 
-	public Piston1ForwardCommand()
+	public Piston2ForwardCommand()
 	{
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		requires(Robot.solenoid1);
+		requires(Robot.solenoid2);
 	}
 
 	// Called just before this Command runs the first time
@@ -22,13 +22,13 @@ public class Piston1ForwardCommand extends Command
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute()
 	{
-		Robot.solenoid1.solenoidForward();
+		Robot.solenoid2.solenoidForward();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished()
 	{
-		return true;
+		return Robot.solenoid2.isLimitReached();
 	}
 
 	// Called once after isFinished returns true

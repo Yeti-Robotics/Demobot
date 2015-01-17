@@ -1,10 +1,8 @@
 package org.usfirst.frc.team3506.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.command.WaitCommand;
 
-/**
- *
- */
 public class TestCommandGroup extends CommandGroup {
     
     public  TestCommandGroup() {
@@ -28,6 +26,11 @@ public class TestCommandGroup extends CommandGroup {
     	addSequential(new DriveStraightCommand());
     	addSequential(new TurnRightCommand());
     	addSequential(new TurnRightCommand());
+    	addSequential(new Piston1ForwardCommand());
+    	addSequential(new Piston1ReverseCommand());
+    	addSequential(new WaitCommand(2));
+    	addSequential(new Piston1ForwardCommand());
+    	addSequential(new Piston1ReverseCommand());
     	addSequential(new DriveStraightCommand());
     }
 }

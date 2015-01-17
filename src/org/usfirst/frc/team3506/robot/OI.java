@@ -3,14 +3,12 @@ package org.usfirst.frc.team3506.robot;
 import static org.usfirst.frc.team3506.robot.RobotMap.LEFT_JOYSTICK;
 import static org.usfirst.frc.team3506.robot.RobotMap.RIGHT_JOYSTICK;
 
-import org.usfirst.frc.team3506.robot.commands.DriveStraightCommand;
 import org.usfirst.frc.team3506.robot.commands.Piston1ForwardCommand;
 import org.usfirst.frc.team3506.robot.commands.Piston1ReverseCommand;
+import org.usfirst.frc.team3506.robot.commands.Piston2ForwardCommand;
+import org.usfirst.frc.team3506.robot.commands.Piston2ReverseCommand;
 import org.usfirst.frc.team3506.robot.commands.RebootCommand;
-import org.usfirst.frc.team3506.robot.commands.TestCommand;
 import org.usfirst.frc.team3506.robot.commands.TestCommandGroup;
-import org.usfirst.frc.team3506.robot.commands.TurnLeftCommand;
-import org.usfirst.frc.team3506.robot.commands.TurnRightCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -56,15 +54,13 @@ public class OI {
 		leftJoy = new Joystick(LEFT_JOYSTICK);
 		rightJoy = new Joystick(RIGHT_JOYSTICK);
 
-		setJoystickButtonCommand(leftJoy, 5,	new TurnRightCommand());
-		setJoystickButtonCommand(leftJoy, 4, new TurnLeftCommand());
-		setJoystickButtonCommand(leftJoy, 3, new DriveStraightCommand());
-		setJoystickButtonCommand(leftJoy, 2, new TestCommandGroup());
+		setJoystickButtonCommand(leftJoy, 3, new Piston2ForwardCommand());
+		setJoystickButtonCommand(leftJoy, 2, new Piston2ReverseCommand());
 		setJoystickButtonCommand(leftJoy, 8, new RebootCommand());
 		
 		setJoystickButtonCommand(rightJoy, 3, new Piston1ForwardCommand());
 		setJoystickButtonCommand(rightJoy, 2, new Piston1ReverseCommand());
-		setJoystickButtonCommand(rightJoy, 8, new TestCommand());
+		setJoystickButtonCommand(rightJoy, 8, new TestCommandGroup());
 	}
 
 	public Joystick getLeftJoy() {

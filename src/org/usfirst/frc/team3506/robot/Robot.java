@@ -8,6 +8,7 @@ import org.usfirst.frc.team3506.robot.commands.UserDriveCommand;
 import org.usfirst.frc.team3506.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.GyroSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.Solenoid1Subsystem;
+import org.usfirst.frc.team3506.robot.subsystems.Solenoid2Subsystem;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
@@ -28,6 +29,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static DriveSubsystem drive;
 	public static Solenoid1Subsystem solenoid1;
+	public static Solenoid2Subsystem solenoid2;
 	public static GyroSubsystem gyroSubsystem;
 	public static Compressor compressor;
 
@@ -41,6 +43,7 @@ public class Robot extends IterativeRobot {
     		gyroSubsystem = new GyroSubsystem();
     		drive = new DriveSubsystem();
 		solenoid1 = new Solenoid1Subsystem();
+		solenoid2 = new Solenoid2Subsystem();
 		compressor = new Compressor();
 		compressor.setClosedLoopControl(true);
 		//this should be last

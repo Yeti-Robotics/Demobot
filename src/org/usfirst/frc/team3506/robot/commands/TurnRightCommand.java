@@ -34,7 +34,7 @@ public class TurnRightCommand extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
 		double angle = Math.abs(gyro.getAngle());
-		return (angle >= RobotMap.RIGHT_STOP_ANGLE);
+		return (angle >= RobotMap.TURN_STOP_ANGLE);
 	}
 
 	// Called once after isFinished returns true

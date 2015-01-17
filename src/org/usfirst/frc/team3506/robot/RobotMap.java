@@ -37,11 +37,15 @@ public class RobotMap {
 	//Pneumatics ports
 	public final static int SOLENOID_1_FORWARD = 0;
 	public final static int SOLENOID_1_REVERSE = 1;
+	public final static int SOLENOID_2_FORWARD = 2;
+	public final static int SOLENOID_2_REVERSE = 3;
 	public final static int PCM_ID_NUMBER = 0;
 	
+	//Digital Inputs
+	public final static int LIMIT_SWITCH_1 = 0;
+	
 	// Angles
-	public final static double RIGHT_STOP_ANGLE = 78;
-	public final static double LEFT_STOP_ANGLE = -78;
+	public final static double TURN_STOP_ANGLE = 78;
 	
 	// Speed
 	public final static double TURN_RIGHT_SPEED = 0.3;
