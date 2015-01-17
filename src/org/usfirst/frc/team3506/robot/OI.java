@@ -7,6 +7,7 @@ import org.usfirst.frc.team3506.robot.commands.DriveStraightCommand;
 import org.usfirst.frc.team3506.robot.commands.Piston1ForwardCommand;
 import org.usfirst.frc.team3506.robot.commands.Piston1ReverseCommand;
 import org.usfirst.frc.team3506.robot.commands.RebootCommand;
+import org.usfirst.frc.team3506.robot.commands.TestCommand;
 import org.usfirst.frc.team3506.robot.commands.TestCommandGroup;
 import org.usfirst.frc.team3506.robot.commands.TurnLeftCommand;
 import org.usfirst.frc.team3506.robot.commands.TurnRightCommand;
@@ -63,6 +64,7 @@ public class OI {
 		
 		setJoystickButtonCommand(rightJoy, 3, new Piston1ForwardCommand());
 		setJoystickButtonCommand(rightJoy, 2, new Piston1ReverseCommand());
+		setJoystickButtonCommand(rightJoy, 8, new TestCommand());
 	}
 
 	public Joystick getLeftJoy() {

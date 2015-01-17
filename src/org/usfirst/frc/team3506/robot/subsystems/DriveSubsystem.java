@@ -23,7 +23,7 @@ public class DriveSubsystem extends Subsystem {
 	Gyro gyro;
 
 	public DriveSubsystem() {
-		gyro = new Gyro(GYRO_PORT);
+		gyro = Robot.gyroSubsystem.getGyro();
 		mecanumDrive = new RobotDrive(LEFT_FRONT_PORT, LEFT_BACK_PORT,
 				RIGHT_FRONT_PORT, RIGHT_BACK_PORT);
 	}
@@ -58,7 +58,7 @@ public class DriveSubsystem extends Subsystem {
 	}
 	
 	public void resetGyro() {
-		gyro.reset();
+	//	gyro.reset();
 	}
 	
 	public void stopMotors() {
@@ -66,9 +66,7 @@ public class DriveSubsystem extends Subsystem {
 	}
 	
 	public void log() {
-		SmartDashboard.putData("Gyro",gyro);
-		SmartDashboard.putNumber("GyroAngle", gyro.getAngle());
-		SmartDashboard.putNumber("GyroRate", gyro.getRate());
+		
 	}
 
 }

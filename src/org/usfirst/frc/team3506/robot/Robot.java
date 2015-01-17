@@ -3,6 +3,7 @@ package org.usfirst.frc.team3506.robot;
 
 import org.usfirst.frc.team3506.robot.commands.UserDriveCommand;
 import org.usfirst.frc.team3506.robot.subsystems.DriveSubsystem;
+import org.usfirst.frc.team3506.robot.subsystems.GyroSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.Solenoid1Subsystem;
 
 import edu.wpi.first.wpilibj.Compressor;
@@ -23,6 +24,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static DriveSubsystem drive;
 	public static Solenoid1Subsystem solenoid1;
+	public static GyroSubsystem gyroSubsystem;
 	public static Compressor compressor;
 
     Command autonomousCommand;
@@ -32,7 +34,8 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-    	drive = new DriveSubsystem();
+    		gyroSubsystem = new GyroSubsystem();
+    		drive = new DriveSubsystem();
 		solenoid1 = new Solenoid1Subsystem();
 		compressor = new Compressor();
 		compressor.setClosedLoopControl(true);
@@ -91,5 +94,6 @@ public class Robot extends IterativeRobot {
     
     private void log() {
     		drive.log();
+    		gyroSubsystem.log();
     }
 }
