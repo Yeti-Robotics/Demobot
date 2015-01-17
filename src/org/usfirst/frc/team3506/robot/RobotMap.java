@@ -40,8 +40,8 @@ public class RobotMap {
 	public final static int PCM_ID_NUMBER = 0;
 	
 	// Angles
-	public final static double RIGHT_STOP_ANGLE = 90;
-	public final static double LEFT_STOP_ANGLE = 270;
+	public final static double RIGHT_STOP_ANGLE = 78;
+	public final static double LEFT_STOP_ANGLE = -78;
 	
 	// Speed
 	public final static double TURN_RIGHT_SPEED = 0.3;
