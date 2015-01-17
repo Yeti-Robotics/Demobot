@@ -3,8 +3,12 @@ package org.usfirst.frc.team3506.robot;
 import static org.usfirst.frc.team3506.robot.RobotMap.LEFT_JOYSTICK;
 import static org.usfirst.frc.team3506.robot.RobotMap.RIGHT_JOYSTICK;
 
+import org.usfirst.frc.team3506.robot.commands.Abort;
+import org.usfirst.frc.team3506.robot.commands.DriveCommand;
 import org.usfirst.frc.team3506.robot.commands.DriveStraightCommand;
+import org.usfirst.frc.team3506.robot.commands.Reboot;
 import org.usfirst.frc.team3506.robot.commands.TestCommandGroup;
+import org.usfirst.frc.team3506.robot.commands.Turn360Command;
 import org.usfirst.frc.team3506.robot.commands.TurnLeftCommand;
 import org.usfirst.frc.team3506.robot.commands.TurnRightCommand;
 
@@ -54,14 +58,23 @@ public class OI {
 		JoystickButton button10 = new JoystickButton(leftJoy, 10);
 		button10.whenPressed(new TurnRightCommand());
 		
-		JoystickButton button7 = new JoystickButton(leftJoy, 7);
+		JoystickButton button7 = new JoystickButton(leftJoy, 4);
 		button7.whenPressed(new TurnLeftCommand());
 		
-		JoystickButton button3 = new JoystickButton(leftJoy, 3);
+		JoystickButton button3 = new JoystickButton(leftJoy, 5);
 		button3.whenPressed(new DriveStraightCommand());
 		
 		JoystickButton button2 = new JoystickButton(leftJoy, 2);
 		button2.whenPressed(new TestCommandGroup());
+		
+		JoystickButton button8 = new JoystickButton(leftJoy, 8);
+		button8.whenPressed(new Reboot());
+		
+		JoystickButton button9 = new JoystickButton(leftJoy, 9);
+		button9.whenPressed(new DriveCommand());
+		
+		JoystickButton button11 = new JoystickButton(leftJoy, 11);
+		button11.whenPressed(new Turn360Command());
 	}
 	
 	public Joystick getLeftJoy() {

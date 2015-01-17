@@ -46,6 +46,7 @@ public class DriveCommand extends Command {
 	 */
 	@Override
 	protected void end() {
+		Robot.drive.abort();
 	}
 
 	/* (non-Javadoc)

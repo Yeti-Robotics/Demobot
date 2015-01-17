@@ -4,15 +4,16 @@
 package org.usfirst.frc.team3506.robot.commands;
 
 import org.usfirst.frc.team3506.robot.Robot;
+import org.usfirst.frc.team3506.robot.subsystems.DriveSubsystem;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * @author acampbell
  *
  */
 public class Turn360Command extends Command {
-
 	public Turn360Command() {
 		requires(Robot.drive);
 	}
@@ -22,7 +23,7 @@ public class Turn360Command extends Command {
 	 */
 	@Override
 	protected void initialize() {
-		setTimeout(2);
+		Robot.drive.resetGyro();
 	}
 
 	/* (non-Javadoc)
@@ -38,7 +39,11 @@ public class Turn360Command extends Command {
 	 */
 	@Override
 	protected boolean isFinished() {
-		return isTimedOut();
+		if(Math.abs(Robot.drive.getGyroAngle())>=310){
+			return true;
+		} else{
+			return false;
+		}
 	}
 
 	/* (non-Javadoc)
@@ -46,6 +51,7 @@ public class Turn360Command extends Command {
 	 */
 	@Override
 	protected void end() {
+		Robot.drive.abort();
 	}
 
 	/* (non-Javadoc)
