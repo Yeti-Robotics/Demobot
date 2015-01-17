@@ -11,9 +11,9 @@ import edu.wpi.first.wpilibj.command.Command;
  * @author acampbell
  *
  */
-public class DriveCommand extends Command {
+public class UserDriveCommand extends Command {
 
-	public DriveCommand() {
+	public UserDriveCommand() {
 		requires(Robot.drive);
 	}
 	

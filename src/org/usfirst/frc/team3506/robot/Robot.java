@@ -1,17 +1,14 @@
 
 package org.usfirst.frc.team3506.robot;
 
-import org.usfirst.frc.team3506.robot.commands.DriveCommand;
-import org.usfirst.frc.team3506.robot.subsystems.CompressorSubsytem;
+import org.usfirst.frc.team3506.robot.commands.UserDriveCommand;
 import org.usfirst.frc.team3506.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.Solenoid1Subsystem;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.hal.CompressorJNI;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
@@ -36,11 +33,11 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
     	drive = new DriveSubsystem();
-		oi = new OI();
 		solenoid1 = new Solenoid1Subsystem();
+		compressor = new Compressor();
 		compressor.setClosedLoopControl(true);
-        // instantiate the command used for the autonomous period
-//        autonomousCommand = new ExampleCommand();
+		//this should be last
+		oi = new OI();
     }
 	
 	public void disabledPeriodic() {
@@ -65,7 +62,7 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
-        new DriveCommand().start();
+        new UserDriveCommand().start();
         
     }
 

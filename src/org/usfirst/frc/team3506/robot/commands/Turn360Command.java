@@ -46,6 +46,7 @@ public class Turn360Command extends Command {
 	 */
 	@Override
 	protected void end() {
+		Robot.drive.stopMotors();
 	}
 
 	/* (non-Javadoc)

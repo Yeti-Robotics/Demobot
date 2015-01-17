@@ -6,7 +6,7 @@ package org.usfirst.frc.team3506.robot.subsystems;
 import static org.usfirst.frc.team3506.robot.RobotMap.*;
 
 import org.usfirst.frc.team3506.robot.Robot;
-import org.usfirst.frc.team3506.robot.commands.DriveCommand;
+import org.usfirst.frc.team3506.robot.commands.UserDriveCommand;
 
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -35,7 +35,7 @@ public class DriveSubsystem extends Subsystem {
 	 */
 	@Override
 	protected void initDefaultCommand() {
-		setDefaultCommand(new DriveCommand());
+		setDefaultCommand(new UserDriveCommand());
 	}
 
 	public void userDrive() {
@@ -57,9 +57,12 @@ public class DriveSubsystem extends Subsystem {
 		mecanumDrive.mecanumDrive_Cartesian(0, -0.5, 0, gyro.getAngle());
 	}
 	
-	
 	public void resetGyro() {
 		gyro.reset();
+	}
+	
+	public void stopMotors() {
+		mecanumDrive.stopMotor();
 	}
 	
 	public void log() {
