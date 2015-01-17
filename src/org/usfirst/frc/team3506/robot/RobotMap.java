@@ -34,4 +34,9 @@ public class RobotMap {
 	public static final double TURN_TIMEOUT = 0.75;
 	public static final double DRIVE_STRAIGHT_TIMEOUT= 2;	
 	
+	//Pneumatics ports
+	public final static int SOLENOID_1_FORWARD = 0;
+	public final static int SOLENOID_1_REVERSE = 1;
+	public final static int PCM_ID_NUMBER = 0;
+	
 }

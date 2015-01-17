@@ -4,6 +4,8 @@ import static org.usfirst.frc.team3506.robot.RobotMap.LEFT_JOYSTICK;
 import static org.usfirst.frc.team3506.robot.RobotMap.RIGHT_JOYSTICK;
 
 import org.usfirst.frc.team3506.robot.commands.DriveStraightCommand;
+import org.usfirst.frc.team3506.robot.commands.Piston1ForwardCommand;
+import org.usfirst.frc.team3506.robot.commands.Piston1ReverseCommand;
 import org.usfirst.frc.team3506.robot.commands.TestCommandGroup;
 import org.usfirst.frc.team3506.robot.commands.TurnLeftCommand;
 import org.usfirst.frc.team3506.robot.commands.TurnRightCommand;
@@ -51,17 +53,23 @@ public class OI {
 		leftJoy = new Joystick(LEFT_JOYSTICK);
 		rightJoy = new Joystick(RIGHT_JOYSTICK);
 		
-		JoystickButton button10 = new JoystickButton(leftJoy, 10);
-		button10.whenPressed(new TurnRightCommand());
+		JoystickButton leftButton10 = new JoystickButton(leftJoy, 10);
+		leftButton10.whenPressed(new TurnRightCommand());
 		
-		JoystickButton button7 = new JoystickButton(leftJoy, 7);
-		button7.whenPressed(new TurnLeftCommand());
+		JoystickButton leftButton7 = new JoystickButton(leftJoy, 7);
+		leftButton7.whenPressed(new TurnLeftCommand());
 		
-		JoystickButton button3 = new JoystickButton(leftJoy, 3);
-		button3.whenPressed(new DriveStraightCommand());
+		JoystickButton leftButton3 = new JoystickButton(leftJoy, 3);
+		leftButton3.whenPressed(new DriveStraightCommand());
 		
-		JoystickButton button2 = new JoystickButton(leftJoy, 2);
-		button2.whenPressed(new TestCommandGroup());
+		JoystickButton leftButton2 = new JoystickButton(leftJoy, 2);
+		leftButton2.whenPressed(new TestCommandGroup());
+		
+		JoystickButton rightButton3 = new JoystickButton(rightJoy, 3);
+		rightButton3.whenPressed(new Piston1ForwardCommand());
+		
+		JoystickButton rightButton2 = new JoystickButton(rightJoy, 2);
+		rightButton2.whenPressed(new Piston1ReverseCommand());
 	}
 	
 	public Joystick getLeftJoy() {
