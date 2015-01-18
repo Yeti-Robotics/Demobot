@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import static org.usfirst.frc.team3506.robot.RobotMap.*;
 
 /**
@@ -27,7 +28,7 @@ public class Solenoid2Subsystem extends Subsystem {
 		if (!limitSwitch.get()) {
 			solenoid2.set(Value.kForward);
 		} else {
-			solenoid2.set(Value.kOff);
+			solenoid2.set(Value.kReverse);
 		}
 	}
 
@@ -42,5 +43,9 @@ public class Solenoid2Subsystem extends Subsystem {
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
+	}
+	
+	public void log() {
+		SmartDashboard.putData("Limit Switch:", limitSwitch);
 	}
 }

@@ -26,8 +26,7 @@ public class TestCommandGroup extends CommandGroup {
     	addSequential(new DriveStraightCommand());
     	addSequential(new TurnRightCommand());
     	addSequential(new TurnRightCommand());
-    	addSequential(new Piston1ForwardCommand());
-    	addSequential(new Piston1ReverseCommand());
+    	addSequential(new Piston2ForwardCommand());
     	addSequential(new WaitCommand(2));
     	addSequential(new Piston1ForwardCommand());
     	addSequential(new Piston1ReverseCommand());

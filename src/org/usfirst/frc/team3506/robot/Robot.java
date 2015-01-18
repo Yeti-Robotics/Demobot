@@ -2,6 +2,7 @@
 package org.usfirst.frc.team3506.robot;
 
 import org.usfirst.frc.team3506.robot.commands.DriveStraightCommand;
+import org.usfirst.frc.team3506.robot.commands.TestCommandGroup;
 import org.usfirst.frc.team3506.robot.commands.TurnLeftCommand;
 import org.usfirst.frc.team3506.robot.commands.TurnRightCommand;
 import org.usfirst.frc.team3506.robot.commands.UserDriveCommand;
@@ -52,6 +53,7 @@ public class Robot extends IterativeRobot {
         SmartDashboard.putData(new TurnRightCommand());
         SmartDashboard.putData(new TurnLeftCommand());
         SmartDashboard.putData(new DriveStraightCommand());
+        SmartDashboard.putData(new TestCommandGroup());
     }
 	
 	public void disabledPeriodic() {
@@ -94,8 +96,6 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
         log();
-        
-        SmartDashboard.putData(Scheduler.getInstance());
     }
     
     
@@ -111,5 +111,6 @@ public class Robot extends IterativeRobot {
     private void log() {
     		drive.log();
     		gyroSubsystem.log();
+    		solenoid2.log();
     }
 }
