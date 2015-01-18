@@ -52,7 +52,7 @@ public class Robot extends IterativeRobot {
 
         SmartDashboard.putData(new TurnRightCommand());
         SmartDashboard.putData(new TurnLeftCommand());
-        SmartDashboard.putData(new DriveStraightCommand());
+        SmartDashboard.putData(new DriveStraightCommand(2.0));
         SmartDashboard.putData(new TestCommandGroup());
     }
 	

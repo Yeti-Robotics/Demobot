@@ -45,7 +45,7 @@ public class RobotMap {
 	public final static int LIMIT_SWITCH_1 = 0;
 	
 	// Angles
-	public final static double TURN_STOP_ANGLE = 78;
+	public final static double TURN_STOP_ANGLE = 70;
 	
 	// Speed
 	public final static double TURN_RIGHT_SPEED = 0.3;
