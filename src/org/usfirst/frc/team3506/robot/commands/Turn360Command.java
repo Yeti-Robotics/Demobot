@@ -30,7 +30,7 @@ public class Turn360Command extends Command {
 	 */
 	@Override
 	protected void execute() {
-		Robot.drive.rightTurn();
+		//Robot.drive.rightTurn();
 	}
 
 	/* (non-Javadoc)

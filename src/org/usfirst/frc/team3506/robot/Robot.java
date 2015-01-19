@@ -30,7 +30,7 @@ public class Robot extends IterativeRobot {
 	public static DriveSubsystem drive;
 	public static Solenoid1Subsystem solenoid1;
 	public static Solenoid2Subsystem solenoid2;
-	public static SensorSubsystem SensorSubsystem;
+	public static SensorSubsystem sensorBase;
 	public static Compressor compressor;
 
 	Command autonomousCommand;
@@ -40,7 +40,7 @@ public class Robot extends IterativeRobot {
 	 * used for any initialization code.
 	 */
 	public void robotInit() {
-		SensorSubsystem = new SensorSubsystem();
+		sensorBase = new SensorSubsystem();
 		drive = new DriveSubsystem();
 		solenoid1 = new Solenoid1Subsystem();
 		solenoid2 = new Solenoid2Subsystem();
@@ -109,7 +109,7 @@ public class Robot extends IterativeRobot {
 
 	private void log() {
 		drive.log();
-		SensorSubsystem.log();
+		sensorBase.log();
 		solenoid2.log();
 	}
 }

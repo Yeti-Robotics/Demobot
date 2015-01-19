@@ -22,7 +22,7 @@ public class DriveSubsystem extends Subsystem {
 	Gyro gyro;
 
 	public DriveSubsystem() {
-		gyro = Robot.SensorSubsystem.getGyro();
+		gyro = Robot.sensorBase.getGyro();
 		mecanumDrive = new RobotDrive(LEFT_FRONT_PORT, LEFT_BACK_PORT,
 				RIGHT_FRONT_PORT, RIGHT_BACK_PORT);
 	}
@@ -44,18 +44,22 @@ public class DriveSubsystem extends Subsystem {
 		resetGyro();
 	}
 
-	public void rightTurn() {
-		mecanumDrive.mecanumDrive_Cartesian(0, 0, TURN_RIGHT_SPEED, gyro.getAngle());
+	public void rightTurn(double speed, double angle) {
+		angle *= (7.0/9.0);
+		while(gyro.getAngle()<=angle){
+			mecanumDrive.mecanumDrive_Cartesian(0, 0, speed, gyro.getAngle());
+		}
 	}
 	
-	public void leftTurn() {
-		mecanumDrive.mecanumDrive_Cartesian(0, 0, TURN_LEFT_SPEED, gyro.getAngle());
+	public void leftTurn(double speed, double angle) {
+		angle *= (7.0/9.0);
+		while(gyro.getAngle()>=angle){
+			mecanumDrive.mecanumDrive_Cartesian(0, 0, -speed, gyro.getAngle());
+		}
 	}
 	
-	public void driveStraight() {
-		mecanumDrive.mecanumDrive_Cartesian(0, FORWARD_SPEED, 0, gyro.getAngle());
-		
-		resetGyro();
+	public void driveStraight(double speed) {
+		mecanumDrive.mecanumDrive_Cartesian(0, speed, 0, gyro.getAngle());
 	}
 	
 	

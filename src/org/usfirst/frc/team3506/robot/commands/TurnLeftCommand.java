@@ -17,18 +17,18 @@ public class TurnLeftCommand extends Command {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		requires(Robot.drive);
-		requires(Robot.SensorSubsystem);
+		requires(Robot.sensorBase);
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		Robot.SensorSubsystem.resetGyro();
-		gyro = Robot.SensorSubsystem.getGyro();
+		Robot.sensorBase.resetGyro();
+		gyro = Robot.sensorBase.getGyro();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.drive.leftTurn();
+		//Robot.drive.leftTurn();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

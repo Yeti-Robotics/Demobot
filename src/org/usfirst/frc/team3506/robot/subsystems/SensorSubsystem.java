@@ -18,6 +18,7 @@ public class SensorSubsystem extends Subsystem {
 	public SensorSubsystem() {
 		gyro = new Gyro(RobotMap.GYRO_PORT);
 		leftFrontEncoder = new Encoder(1, 2);
+		// leftFrontEncoder.set ...
 	}
 
 	public void initDefaultCommand() {
@@ -32,13 +33,15 @@ public class SensorSubsystem extends Subsystem {
 		gyro.reset();
 	}
 
-	public Encoder getEncoder() {
+	public Encoder getLeftFrontEncoder() {
 		return leftFrontEncoder;
 	}
 
 	public void resetEncoder(){
     	leftFrontEncoder.reset();
     }
+	
+	
 	
 	public void resetAll(){
 		resetGyro();

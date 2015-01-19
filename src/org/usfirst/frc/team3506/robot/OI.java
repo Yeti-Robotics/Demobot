@@ -8,6 +8,7 @@ import org.usfirst.frc.team3506.robot.commands.Piston1ReverseCommand;
 import org.usfirst.frc.team3506.robot.commands.Piston2ForwardCommand;
 import org.usfirst.frc.team3506.robot.commands.Piston2ReverseCommand;
 import org.usfirst.frc.team3506.robot.commands.RebootCommand;
+import org.usfirst.frc.team3506.robot.commands.ResetGyroCommand;
 import org.usfirst.frc.team3506.robot.commands.TestCommandGroup;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -61,6 +62,8 @@ public class OI {
 		setJoystickButtonCommand(rightJoy, 3, new Piston1ForwardCommand());
 		setJoystickButtonCommand(rightJoy, 2, new Piston1ReverseCommand());
 		setJoystickButtonCommand(rightJoy, 8, new TestCommandGroup());
+		
+		setJoystickButtonCommand(rightJoy, 10, new ResetGyroCommand());
 	}
 
 	public Joystick getLeftJoy() {
