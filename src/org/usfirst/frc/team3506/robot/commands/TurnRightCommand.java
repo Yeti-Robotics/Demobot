@@ -17,13 +17,13 @@ public class TurnRightCommand extends Command {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		requires(Robot.drive);
-		requires(Robot.gyroSubsystem);
+		requires(Robot.SensorSubsystem);
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		Robot.gyroSubsystem.resetGyro();
-		gyro = Robot.gyroSubsystem.getGyro();
+		Robot.SensorSubsystem.resetGyro();
+		gyro = Robot.SensorSubsystem.getGyro();
 	}
 
 	// Called repeatedly when this Command is scheduled to run

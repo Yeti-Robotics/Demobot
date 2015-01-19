@@ -22,7 +22,7 @@ public class DriveSubsystem extends Subsystem {
 	Gyro gyro;
 
 	public DriveSubsystem() {
-		gyro = Robot.gyroSubsystem.getGyro();
+		gyro = Robot.SensorSubsystem.getGyro();
 		mecanumDrive = new RobotDrive(LEFT_FRONT_PORT, LEFT_BACK_PORT,
 				RIGHT_FRONT_PORT, RIGHT_BACK_PORT);
 	}
