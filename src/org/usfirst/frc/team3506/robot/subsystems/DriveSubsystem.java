@@ -38,28 +38,24 @@ public class DriveSubsystem extends Subsystem {
 	}
 
 	public void userDrive() {
-		mecanumDrive.mecanumDrive_Cartesian(Robot.oi.getLeftJoy().getX(),
-				Robot.oi.getLeftJoy().getY(), Robot.oi.getRightJoy().getX(),
+		mecanumDrive.mecanumDrive_Cartesian(Robot.oi.getLeftX(),
+				Robot.oi.getLeftY(), Robot.oi.getRightX(),
 				gyro.getAngle());
 		resetGyro();
 	}
 
-	public void rightTurn(double speed, double angle) {
-		angle *= (7.0/9.0);
-		while(gyro.getAngle()<=angle){
+	public void rightTurn(double speed) {
+			System.out.println("Current angle:\t"+gyro.getAngle());
 			mecanumDrive.mecanumDrive_Cartesian(0, 0, speed, gyro.getAngle());
-		}
 	}
 	
-	public void leftTurn(double speed, double angle) {
-		angle *= (7.0/9.0);
-		while(gyro.getAngle()>=angle){
+	public void leftTurn(double speed) {
+			System.out.println("Current angle:\t"+gyro.getAngle());
 			mecanumDrive.mecanumDrive_Cartesian(0, 0, -speed, gyro.getAngle());
-		}
 	}
 	
 	public void driveStraight(double speed) {
-		mecanumDrive.mecanumDrive_Cartesian(0, speed, 0, gyro.getAngle());
+		mecanumDrive.mecanumDrive_Cartesian(0, -speed, 0, gyro.getAngle());
 	}
 	
 	

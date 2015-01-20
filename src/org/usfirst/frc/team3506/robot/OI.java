@@ -10,6 +10,7 @@ import org.usfirst.frc.team3506.robot.commands.Piston2ReverseCommand;
 import org.usfirst.frc.team3506.robot.commands.RebootCommand;
 import org.usfirst.frc.team3506.robot.commands.ResetGyroCommand;
 import org.usfirst.frc.team3506.robot.commands.TestCommandGroup;
+import org.usfirst.frc.team3506.robot.commands.UniversalDriveCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -64,14 +65,30 @@ public class OI {
 		setJoystickButtonCommand(rightJoy, 8, new TestCommandGroup());
 		
 		setJoystickButtonCommand(rightJoy, 10, new ResetGyroCommand());
+		
+		setJoystickButtonCommand(rightJoy, 11, new UniversalDriveCommand(0, 0.5, 3));
+		setJoystickButtonCommand(rightJoy, 9, new UniversalDriveCommand(164, 0.2, 0));
+	}
+	
+
+	private double deadZoneMod(double joyVal){
+		if (Math.abs(joyVal) > 0.1) {
+			return joyVal;
+		} else {
+			return 0.0;
+		}
+	}
+	
+	public double getLeftX() {
+		return deadZoneMod(leftJoy.getX());
 	}
 
-	public Joystick getLeftJoy() {
-		return leftJoy;
+	public double getLeftY(){
+		return deadZoneMod(leftJoy.getY());
 	}
-
-	public Joystick getRightJoy() {
-		return rightJoy;
+	
+	public double getRightX() {
+		return deadZoneMod(rightJoy.getX());
 	}
 
 	private void setJoystickButtonCommand(Joystick joystick, int button,

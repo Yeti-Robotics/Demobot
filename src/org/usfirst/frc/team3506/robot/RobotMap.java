@@ -43,6 +43,8 @@ public class RobotMap {
 	
 	//Digital Inputs
 	public final static int LIMIT_SWITCH_1 = 0;
+	public final static int LEFT_FRONT_ENC1 = 1;  
+	public final static int LEFT_FRONT_ENC2 = 2;  
 	
 	// Angles
 	public final static double TURN_STOP_ANGLE = 70;
@@ -51,5 +53,5 @@ public class RobotMap {
 	public final static double TURN_RIGHT_SPEED = 0.3;
 	public final static double TURN_LEFT_SPEED = -0.3;
 	public final static double FORWARD_SPEED = -0.5;
-	
+	public final static double DIST_PER_PULSE = 0.006;	
 }

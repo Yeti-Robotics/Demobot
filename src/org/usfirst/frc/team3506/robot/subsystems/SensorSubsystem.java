@@ -14,11 +14,14 @@ public class SensorSubsystem extends Subsystem {
 
 	Gyro gyro;
 	Encoder leftFrontEncoder;
+	Encoder extraneousEncoder;
 
 	public SensorSubsystem() {
 		gyro = new Gyro(RobotMap.GYRO_PORT);
-		leftFrontEncoder = new Encoder(1, 2);
-		// leftFrontEncoder.set ...
+		leftFrontEncoder = new Encoder(RobotMap.LEFT_FRONT_ENC1, RobotMap.LEFT_FRONT_ENC2);
+		leftFrontEncoder.setDistancePerPulse(RobotMap.DIST_PER_PULSE); //In feet
+		//leftFrontEncoder.setReverseDirection(true);
+		extraneousEncoder = new Encoder(3, 4);
 	}
 
 	public void initDefaultCommand() {
@@ -37,15 +40,19 @@ public class SensorSubsystem extends Subsystem {
 		return leftFrontEncoder;
 	}
 
-	public void resetEncoder(){
+	public void resetLeftFrontEncoder(){
     	leftFrontEncoder.reset();
     }
+	
+	public Encoder getExtraneousEncoder(){
+		return extraneousEncoder;
+	}
 	
 	
 	
 	public void resetAll(){
 		resetGyro();
-		resetEncoder();
+		resetLeftFrontEncoder();
 	}
 
 	public void log() {

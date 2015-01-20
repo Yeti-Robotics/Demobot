@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -16,51 +17,65 @@ public class UniversalDriveCommand extends Command {
 	double angle;
 	double speed;
 	double distance;
-	double distanceTravelled;
-    public UniversalDriveCommand(double angle, double speed, double distance) {
-    	requires(Robot.drive);
-    	requires(Robot.sensorBase);
-    	this.angle = angle;
-    	this.speed = speed;
-    	this.distance = distance;
-    }
+	double distanceTraveled;
+	boolean isFinished;
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    	gyro = Robot.sensorBase.getGyro();
-    	leftFront = Robot.sensorBase.getLeftFrontEncoder();
-    	gyro.reset();
-    	leftFront.reset();
-    	distanceTravelled = 0;
-    }
+	public UniversalDriveCommand(double angle, double speed, double distance) {
+		requires(Robot.drive);
+		requires(Robot.sensorBase);
+		this.angle = angle;
+		this.speed = speed;
+		this.distance = distance;
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	if(angle==0){
-    		while(distanceTravelled<distance){
-    			Robot.drive.driveStraight(speed);
-    			distanceTravelled = leftFront.getDistance()*0.0065;
-    		}
-    	} else if(angle<0){
-    		Robot.drive.leftTurn(speed, angle);
-    	} else{
-    		Robot.drive.rightTurn(speed, angle);
-    	}
-    }
+	// Called just before this Command runs the first time
+	protected void initialize() {
+		gyro = Robot.sensorBase.getGyro();
+		leftFront = Robot.sensorBase.getLeftFrontEncoder();
+		gyro.reset();
+		leftFront.reset();
+		distanceTraveled = 0;
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return true;
-    }
+	// Called repeatedly when this Command is scheduled to run
+	protected void execute() {
+		SmartDashboard.putData("Encoder", leftFront);
+		SmartDashboard.putNumber("Distance traveled:", distanceTraveled);
 
-    // Called once after isFinished returns true
-    protected void end() {
-    	Robot.drive.stopMotors();
-    }
+		if (angle == 0) {
+			Robot.drive.driveStraight(speed);
+			distanceTraveled = -leftFront.getDistance();// * -0.006;
+		} else if (angle < 0) {
+			Robot.drive.leftTurn(speed);
+		} else {
+			Robot.drive.rightTurn(speed);
+		}
+		System.out.println(-leftFront.getDistance());
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    	end();
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished() {
+		if (angle == 0) {
+			if (distanceTraveled < distance) {
+				return false;
+			} else {
+				return true;
+			}
+		} else if (angle < 0) {
+			return (gyro.getAngle()<=angle);
+		} else {
+			return (gyro.getAngle()>=angle);
+		}
+	}
+
+	// Called once after isFinished returns true
+	protected void end() {
+		Robot.drive.stopMotors();
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted() {
+		end();
+	}
 }
