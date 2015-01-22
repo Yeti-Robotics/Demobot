@@ -1,10 +1,17 @@
 package org.usfirst.frc.team3506.robot;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.usfirst.frc.team3506.robot.commands.DriveStraightCommand;
+import org.usfirst.frc.team3506.robot.commands.LoadRecordingCommand;
+import org.usfirst.frc.team3506.robot.commands.SaveRecordingCommand;
+import org.usfirst.frc.team3506.robot.commands.TestCommand;
 import org.usfirst.frc.team3506.robot.commands.TestCommandGroup;
 import org.usfirst.frc.team3506.robot.commands.TurnLeftCommand;
 import org.usfirst.frc.team3506.robot.commands.TurnRightCommand;
 import org.usfirst.frc.team3506.robot.commands.UserDriveCommand;
+import org.usfirst.frc.team3506.robot.domain.RobotInput;
 import org.usfirst.frc.team3506.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.SensorSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.Solenoid1Subsystem;
@@ -32,6 +39,10 @@ public class Robot extends IterativeRobot {
 	public static Solenoid2Subsystem solenoid2;
 	public static SensorSubsystem sensorBase;
 	public static Compressor compressor;
+	public static List<RobotInput> inputs = new ArrayList<RobotInput>();
+	public static RobotInput input;
+	public static boolean recording = false;
+	public static boolean playing = false;
 
 	Command autonomousCommand;
 
@@ -53,6 +64,9 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData(new TurnLeftCommand());
 		SmartDashboard.putData(new DriveStraightCommand(2.0));
 		SmartDashboard.putData(new TestCommandGroup());
+		SmartDashboard.putData(new TestCommand());
+		SmartDashboard.putData(new SaveRecordingCommand());
+		SmartDashboard.putData(new LoadRecordingCommand());
 	}
 
 	public void disabledPeriodic() {
@@ -95,6 +109,16 @@ public class Robot extends IterativeRobot {
 	 * This function is called periodically during operator control
 	 */
 	public void teleopPeriodic() {
+		if (!playing) {
+			input = new RobotInput();
+			input.setLeftX(oi.getLeftX());
+			input.setLeftY(oi.getLeftY());
+			input.setRightX(oi.getRightX());
+		}
+		if (recording) {
+			inputs.add(input);
+		}
+		
 		Scheduler.getInstance().run();
 		log();
 	}
@@ -111,5 +135,7 @@ public class Robot extends IterativeRobot {
 		drive.log();
 		sensorBase.log();
 		solenoid2.log();
+		SmartDashboard.putBoolean("Recording:", recording);
+		SmartDashboard.putNumber("Input count:", inputs.size());
 	}
 }

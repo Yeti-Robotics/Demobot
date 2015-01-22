@@ -9,6 +9,7 @@ import org.usfirst.frc.team3506.robot.commands.Piston2ForwardCommand;
 import org.usfirst.frc.team3506.robot.commands.Piston2ReverseCommand;
 import org.usfirst.frc.team3506.robot.commands.RebootCommand;
 import org.usfirst.frc.team3506.robot.commands.ResetGyroCommand;
+import org.usfirst.frc.team3506.robot.commands.TestCommand;
 import org.usfirst.frc.team3506.robot.commands.TestCommandGroup;
 import org.usfirst.frc.team3506.robot.commands.UniversalDriveCommand;
 
@@ -68,6 +69,8 @@ public class OI {
 		
 		setJoystickButtonCommand(rightJoy, 11, new UniversalDriveCommand(0, 0.5, 3));
 		setJoystickButtonCommand(rightJoy, 9, new UniversalDriveCommand(164, 0.2, 0));
+		
+		setJoystickButtonCommand(leftJoy, 11, new TestCommand());
 	}
 	
 

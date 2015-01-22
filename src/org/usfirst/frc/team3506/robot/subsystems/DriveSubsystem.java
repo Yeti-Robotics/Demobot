@@ -38,8 +38,8 @@ public class DriveSubsystem extends Subsystem {
 	}
 
 	public void userDrive() {
-		mecanumDrive.mecanumDrive_Cartesian(Robot.oi.getLeftX(),
-				Robot.oi.getLeftY(), Robot.oi.getRightX(),
+		mecanumDrive.mecanumDrive_Cartesian(Robot.input.getLeftX(),
+				Robot.input.getLeftY(), Robot.input.getRightX(),
 				gyro.getAngle());
 		resetGyro();
 	}
