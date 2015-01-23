@@ -12,12 +12,12 @@ import org.usfirst.frc.team3506.robot.commands.TurnLeftCommand;
 import org.usfirst.frc.team3506.robot.commands.TurnRightCommand;
 import org.usfirst.frc.team3506.robot.commands.UserDriveCommand;
 import org.usfirst.frc.team3506.robot.domain.RobotInput;
+import org.usfirst.frc.team3506.robot.subsystems.CompressorSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.SensorSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.Solenoid1Subsystem;
 import org.usfirst.frc.team3506.robot.subsystems.Solenoid2Subsystem;
 
-import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -38,7 +38,7 @@ public class Robot extends IterativeRobot {
 	public static Solenoid1Subsystem solenoid1;
 	public static Solenoid2Subsystem solenoid2;
 	public static SensorSubsystem sensorBase;
-	public static Compressor compressor;
+	public static CompressorSubsystem compressor;
 	public static List<RobotInput> inputs = new ArrayList<RobotInput>();
 	public static RobotInput input;
 	public static boolean recording = false;
@@ -55,8 +55,7 @@ public class Robot extends IterativeRobot {
 		drive = new DriveSubsystem();
 		solenoid1 = new Solenoid1Subsystem();
 		solenoid2 = new Solenoid2Subsystem();
-		compressor = new Compressor();
-		compressor.setClosedLoopControl(true);
+		compressor = new CompressorSubsystem();
 		// this should be last
 		oi = new OI();
 

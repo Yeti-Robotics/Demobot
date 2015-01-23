@@ -9,6 +9,8 @@ import org.usfirst.frc.team3506.robot.commands.Piston2ForwardCommand;
 import org.usfirst.frc.team3506.robot.commands.Piston2ReverseCommand;
 import org.usfirst.frc.team3506.robot.commands.RebootCommand;
 import org.usfirst.frc.team3506.robot.commands.ResetGyroCommand;
+import org.usfirst.frc.team3506.robot.commands.StartCompressorCommand;
+import org.usfirst.frc.team3506.robot.commands.StopCompressorCommand;
 import org.usfirst.frc.team3506.robot.commands.TestCommand;
 import org.usfirst.frc.team3506.robot.commands.TestCommandGroup;
 import org.usfirst.frc.team3506.robot.commands.UniversalDriveCommand;
@@ -56,21 +58,33 @@ public class OI {
 	public OI() {
 		leftJoy = new Joystick(LEFT_JOYSTICK);
 		rightJoy = new Joystick(RIGHT_JOYSTICK);
-
+		
+		//Piston 2 forward
 		setJoystickButtonCommand(leftJoy, 3, new Piston2ForwardCommand());
+		//Piston 2 reverse
 		setJoystickButtonCommand(leftJoy, 2, new Piston2ReverseCommand());
-		setJoystickButtonCommand(leftJoy, 8, new RebootCommand());
+		//Failsafe
+		setJoystickButtonCommand(leftJoy, 7, new RebootCommand());
+		//Command in development
+		setJoystickButtonCommand(leftJoy, 11, new TestCommand());
+		//Start the compressor
+		setJoystickButtonCommand(leftJoy, 8, new StartCompressorCommand());
+		//Stop the compressor
+		setJoystickButtonCommand(leftJoy, 9, new StopCompressorCommand());
 		
+		//Piston 1 forward
 		setJoystickButtonCommand(rightJoy, 3, new Piston1ForwardCommand());
+		//Piston 1 reverse (not currently necessary)
 		setJoystickButtonCommand(rightJoy, 2, new Piston1ReverseCommand());
+		//Command group in development
 		setJoystickButtonCommand(rightJoy, 8, new TestCommandGroup());
-		
+		//Reset the gyro
 		setJoystickButtonCommand(rightJoy, 10, new ResetGyroCommand());
-		
+		//Testing universal drive command
 		setJoystickButtonCommand(rightJoy, 11, new UniversalDriveCommand(0, 0.5, 3));
 		setJoystickButtonCommand(rightJoy, 9, new UniversalDriveCommand(164, 0.2, 0));
 		
-		setJoystickButtonCommand(leftJoy, 11, new TestCommand());
+		
 	}
 	
 
