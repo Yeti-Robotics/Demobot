@@ -108,6 +108,14 @@ public class OI {
 		return deadZoneMod(rightJoy.getX());
 	}
 
+	public Joystick getLeftJoystick() {
+		return leftJoy;
+	}
+	
+	public Joystick getRightJoystick() {
+		return rightJoy;
+	}
+	
 	private void setJoystickButtonCommand(Joystick joystick, int button,
 			Command command) {
 		new JoystickButton(joystick, button).whenPressed(command);

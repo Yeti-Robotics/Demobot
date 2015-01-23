@@ -10,6 +10,14 @@ public class RobotInput implements Serializable {
 	
 	double leftX, leftY, rightX, rightY;
 	
+	boolean leftButtonState1;
+	
+	public boolean isLeftButtonState1() {
+		return leftButtonState1;
+	}
+	public void setLeftButtonState1(boolean leftButtonState1) {
+		this.leftButtonState1 = leftButtonState1;
+	}
 	public double getLeftX() {
 		return leftX;
 	}

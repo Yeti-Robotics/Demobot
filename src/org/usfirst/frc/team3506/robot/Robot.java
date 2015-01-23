@@ -113,7 +113,9 @@ public class Robot extends IterativeRobot {
 			input.setLeftX(oi.getLeftX());
 			input.setLeftY(oi.getLeftY());
 			input.setRightX(oi.getRightX());
+			input.setLeftButtonState1(oi.getLeftJoystick().getRawButton(1));
 		}
+		
 		if (recording) {
 			inputs.add(input);
 		}
