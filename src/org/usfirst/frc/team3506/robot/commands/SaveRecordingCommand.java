@@ -43,7 +43,7 @@ public class SaveRecordingCommand extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-		Robot.inputs.clear();
+		
     }
 
     // Called when another command which requires one or more of the same

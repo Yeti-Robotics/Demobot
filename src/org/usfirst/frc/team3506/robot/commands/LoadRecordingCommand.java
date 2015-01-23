@@ -51,6 +51,12 @@ public class LoadRecordingCommand extends Command {
 			if (Robot.input.isLeftButtonState1()) {
 				Scheduler.getInstance().add(new Piston2ForwardCommand());
 			}
+			if (Robot.input.isRightButtonState3()) {
+				Scheduler.getInstance().add(new Piston1ForwardCommand());
+			}
+			if (Robot.input.isRightButtonState2()) {
+				Scheduler.getInstance().add(new Piston1ReverseCommand());
+			}
 		} else {
 			System.out.println("ERROR: list should have something in it:");
 		}
