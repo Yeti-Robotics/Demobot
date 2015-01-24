@@ -28,8 +28,10 @@ public class RobotMap {
 	// Joystick ports
 	public static final int LEFT_JOYSTICK = 1;
 	public static final int RIGHT_JOYSTICK = 2;
-	
-	 // Gyro Port
+	public static final int JOYSTICK_AXIS_X = 1;
+	public static final int JOYSTICK_AXIS_Y = 2;
+	 
+	// Gyro Port
 	public static final int GYRO_PORT = 0;
 	public static final double TURN_TIMEOUT = 0.75;
 	public static final double DRIVE_STRAIGHT_TIMEOUT= 2;	

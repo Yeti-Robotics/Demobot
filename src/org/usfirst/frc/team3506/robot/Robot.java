@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.usfirst.frc.team3506.robot.commands.DriveStraightCommand;
 import org.usfirst.frc.team3506.robot.commands.LoadRecordingCommand;
+import org.usfirst.frc.team3506.robot.commands.Piston1ForwardCommand;
+import org.usfirst.frc.team3506.robot.commands.Piston1ReverseCommand;
 import org.usfirst.frc.team3506.robot.commands.Piston2ForwardCommand;
 import org.usfirst.frc.team3506.robot.commands.SaveRecordingCommand;
 import org.usfirst.frc.team3506.robot.commands.TestCommand;
@@ -12,8 +14,8 @@ import org.usfirst.frc.team3506.robot.commands.TestCommandGroup;
 import org.usfirst.frc.team3506.robot.commands.TurnLeftCommand;
 import org.usfirst.frc.team3506.robot.commands.TurnRightCommand;
 import org.usfirst.frc.team3506.robot.commands.UserDriveCommand;
+import org.usfirst.frc.team3506.robot.domain.OldRobotInput;
 import org.usfirst.frc.team3506.robot.domain.RobotInput;
-import org.usfirst.frc.team3506.robot.domain.ButtonInput;
 import org.usfirst.frc.team3506.robot.subsystems.CompressorSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.SensorSubsystem;
@@ -41,11 +43,16 @@ public class Robot extends IterativeRobot {
 	public static Solenoid2Subsystem solenoid2;
 	public static SensorSubsystem sensorBase;
 	public static CompressorSubsystem compressor;
-	public static List<RobotInput> inputs = new ArrayList<RobotInput>();
-	public static RobotInput input;
+	public static List<OldRobotInput> inputs = new ArrayList<OldRobotInput>();
+	public static OldRobotInput input;
 	public static boolean recording = false;
 	public static boolean playing = false;
-//	public static YetiButton testLeftButton3;
+//	public static RobotInput testLeftButton3;
+	public static List<RobotInput> robotInputs = new ArrayList<RobotInput>();
+	public static RobotInput testLeftButton3;
+	public static RobotInput joystickInput;
+	public static RobotInput testRightButton3;
+	public static RobotInput testRightButton2;
 
 	Command autonomousCommand;
 
@@ -112,18 +119,28 @@ public class Robot extends IterativeRobot {
 	 */
 	public void teleopPeriodic() {
 		if (!playing) {
-//			testLeftButton3 = new YetiButton(RobotMap.LEFT_JOYSTICK, 3, new Piston2ForwardCommand());
-			input = new RobotInput();
-			input.setLeftX(oi.getLeftX());
-			input.setLeftY(oi.getLeftY());
-			input.setRightX(oi.getRightX());
+			joystickInput = new RobotInput(RobotMap.LEFT_JOYSTICK, RobotMap.LEFT_JOYSTICK);
+			testRightButton3 = new RobotInput(RobotMap.RIGHT_JOYSTICK, 3, new Piston1ForwardCommand());
+			testRightButton2 = new RobotInput(RobotMap.RIGHT_JOYSTICK, 2, new Piston1ReverseCommand());
+			testLeftButton3 = new RobotInput(RobotMap.LEFT_JOYSTICK, 3, new Piston2ForwardCommand());
+			input = new OldRobotInput();
+			joystickInput.setLeftX();
+			joystickInput.setLeftY();
+			joystickInput.setRightX();
+			testRightButton2.setButtonState();
+			testRightButton3.setButtonState();
 			input.setLeftButtonState3(oi.getLeftJoystick().getRawButton(3));
-			input.setRightButtonState3(oi.getRightJoystick().getRawButton(3));
-			input.setRightButtonState2(oi.getRightJoystick().getRawButton(2));
+//			input.setRightButtonState3(oi.getRightJoystick().getRawButton(3));
+//			input.setRightButtonState2(oi.getRightJoystick().getRawButton(2));
+			testLeftButton3.setButtonState();
 		}
 		
 		if (recording) {
+			robotInputs.add(testLeftButton3);
+			robotInputs.add(testRightButton2);
+			robotInputs.add(testRightButton3);
 			inputs.add(input);
+			robotInputs.add(joystickInput);
 		}
 		
 		Scheduler.getInstance().run();

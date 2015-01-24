@@ -7,8 +7,8 @@ import java.util.List;
 
 import org.usfirst.frc.team3506.robot.Robot;
 import org.usfirst.frc.team3506.robot.RobotMap;
+import org.usfirst.frc.team3506.robot.domain.OldRobotInput;
 import org.usfirst.frc.team3506.robot.domain.RobotInput;
-import org.usfirst.frc.team3506.robot.domain.ButtonInput;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -18,7 +18,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
  */
 public class LoadRecordingCommand extends Command {
 	int count = 0;
-	ButtonInput testLeftButton3;
+	RobotInput testLeftButton3;
 
 	public LoadRecordingCommand() {
 		// Use requires() here to declare subsystem dependencies
@@ -34,7 +34,8 @@ public class LoadRecordingCommand extends Command {
 					"input.txt"));
 			ObjectInputStream objectInputStream = new ObjectInputStream(
 					fileInputStream);
-			Robot.inputs = (List<RobotInput>) objectInputStream.readObject();
+			Robot.inputs = (List<OldRobotInput>) objectInputStream.readObject();
+			Robot.robotInputs = (List<RobotInput>) objectInputStream.readObject();
 			objectInputStream.close();
 			fileInputStream.close();
 		} catch (Exception e) {
@@ -43,7 +44,7 @@ public class LoadRecordingCommand extends Command {
 		}
 		count = 0;
 		Robot.playing = true;
-		testLeftButton3 = new ButtonInput(RobotMap.LEFT_JOYSTICK, 3, new Piston2ForwardCommand());
+		testLeftButton3 = new RobotInput(RobotMap.LEFT_JOYSTICK, 3, new Piston2ForwardCommand());
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -62,6 +63,9 @@ public class LoadRecordingCommand extends Command {
 				Scheduler.getInstance().add(new Piston1ReverseCommand());
 			}
 			testLeftButton3.recordButtonState();
+			if (Robot.input.isLeftButtonState3()) {
+			Scheduler.getInstance().add(new Piston2ForwardCommand());
+			}
 			
 		} else {
 			System.out.println("ERROR: list should have something in it:");
