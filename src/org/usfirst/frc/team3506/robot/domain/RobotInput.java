@@ -10,7 +10,7 @@ public class RobotInput implements Serializable {
 	
 	double leftX, leftY, rightX, rightY;
 	
-	boolean leftButtonState1;
+	boolean leftButtonState3;
 	public boolean isRightButtonState2() {
 		return rightButtonState2;
 	}
@@ -26,11 +26,11 @@ public class RobotInput implements Serializable {
 	}
 	boolean rightButtonState2;
 	
-	public boolean isLeftButtonState1() {
-		return leftButtonState1;
+	public boolean isLeftButtonState3() {
+		return leftButtonState3;
 	}
-	public void setLeftButtonState1(boolean leftButtonState1) {
-		this.leftButtonState1 = leftButtonState1;
+	public void setLeftButtonState3(boolean leftButtonState3) {
+		this.leftButtonState3 = leftButtonState3;
 	}
 	public double getLeftX() {
 		return leftX;

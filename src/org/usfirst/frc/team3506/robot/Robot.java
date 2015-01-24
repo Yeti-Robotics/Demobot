@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.usfirst.frc.team3506.robot.commands.DriveStraightCommand;
 import org.usfirst.frc.team3506.robot.commands.LoadRecordingCommand;
+import org.usfirst.frc.team3506.robot.commands.Piston2ForwardCommand;
 import org.usfirst.frc.team3506.robot.commands.SaveRecordingCommand;
 import org.usfirst.frc.team3506.robot.commands.TestCommand;
 import org.usfirst.frc.team3506.robot.commands.TestCommandGroup;
@@ -12,6 +13,7 @@ import org.usfirst.frc.team3506.robot.commands.TurnLeftCommand;
 import org.usfirst.frc.team3506.robot.commands.TurnRightCommand;
 import org.usfirst.frc.team3506.robot.commands.UserDriveCommand;
 import org.usfirst.frc.team3506.robot.domain.RobotInput;
+import org.usfirst.frc.team3506.robot.domain.ButtonInput;
 import org.usfirst.frc.team3506.robot.subsystems.CompressorSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.SensorSubsystem;
@@ -43,6 +45,7 @@ public class Robot extends IterativeRobot {
 	public static RobotInput input;
 	public static boolean recording = false;
 	public static boolean playing = false;
+//	public static YetiButton testLeftButton3;
 
 	Command autonomousCommand;
 
@@ -109,11 +112,12 @@ public class Robot extends IterativeRobot {
 	 */
 	public void teleopPeriodic() {
 		if (!playing) {
+//			testLeftButton3 = new YetiButton(RobotMap.LEFT_JOYSTICK, 3, new Piston2ForwardCommand());
 			input = new RobotInput();
 			input.setLeftX(oi.getLeftX());
 			input.setLeftY(oi.getLeftY());
 			input.setRightX(oi.getRightX());
-			input.setLeftButtonState1(oi.getLeftJoystick().getRawButton(3));
+			input.setLeftButtonState3(oi.getLeftJoystick().getRawButton(3));
 			input.setRightButtonState3(oi.getRightJoystick().getRawButton(3));
 			input.setRightButtonState2(oi.getRightJoystick().getRawButton(2));
 		}
