@@ -8,11 +8,13 @@ import org.usfirst.frc.team3506.robot.commands.Piston1ReverseCommand;
 import org.usfirst.frc.team3506.robot.commands.Piston2ForwardCommand;
 import org.usfirst.frc.team3506.robot.commands.Piston2ReverseCommand;
 import org.usfirst.frc.team3506.robot.commands.RebootCommand;
+import org.usfirst.frc.team3506.robot.commands.RecordCommand;
 import org.usfirst.frc.team3506.robot.commands.ResetGyroCommand;
 import org.usfirst.frc.team3506.robot.commands.StartCompressorCommand;
 import org.usfirst.frc.team3506.robot.commands.StopCompressorCommand;
-import org.usfirst.frc.team3506.robot.commands.TestCommand;
 import org.usfirst.frc.team3506.robot.commands.TestCommandGroup;
+import org.usfirst.frc.team3506.robot.commands.ChangeLightSpeedCommand;
+import org.usfirst.frc.team3506.robot.commands.ToggleLightsCommand;
 import org.usfirst.frc.team3506.robot.commands.UniversalDriveCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -65,12 +67,16 @@ public class OI {
 		setJoystickButtonCommand(leftJoy, 2, new Piston2ReverseCommand());
 		//Failsafe
 		setJoystickButtonCommand(leftJoy, 7, new RebootCommand());
-		//Command in development
-		setJoystickButtonCommand(leftJoy, 11, new TestCommand());
+		//Start recording
+		setJoystickButtonCommand(leftJoy, 11, new RecordCommand());
 		//Start the compressor
 		setJoystickButtonCommand(leftJoy, 8, new StartCompressorCommand());
 		//Stop the compressor
 		setJoystickButtonCommand(leftJoy, 9, new StopCompressorCommand());
+		//Change LED speed
+		setJoystickButtonCommand(leftJoy, 10, new ChangeLightSpeedCommand());
+		//Toggle LEDs
+		setJoystickButtonCommand(leftJoy, 4, new ToggleLightsCommand());
 		
 		//Piston 1 forward
 		setJoystickButtonCommand(rightJoy, 3, new Piston1ForwardCommand());

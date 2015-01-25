@@ -7,11 +7,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class TestCommand extends Command {
+public class ToggleLightsCommand extends Command {
 
-    public TestCommand() {
+    public ToggleLightsCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.ledSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -20,7 +21,7 @@ public class TestCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		Robot.recording = !Robot.recording;
+    	Robot.ledSubsystem.toggleLeds();
     }
 
     // Make this return true when this Command no longer needs to run execute()

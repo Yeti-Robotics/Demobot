@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3506.robot;
 
 
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -28,8 +29,11 @@ public class RobotMap {
 	// Joystick ports
 	public static final int LEFT_JOYSTICK = 1;
 	public static final int RIGHT_JOYSTICK = 2;
-	public static final int JOYSTICK_AXIS_X = 1;
-	public static final int JOYSTICK_AXIS_Y = 2;
+	public static final int JOYSTICK_AXIS_X = 0;
+	public static final int JOYSTICK_AXIS_Y = 1;
+	public static final int JOYSTICK_THROTTLE = 2;
+	public static final int NUMBER_OF_RIGHT_JOYSTICK_BUTTONS = 11;
+	public static final int NUMBER_OF_LEFT_JOYSTICK_BUTTONS = 11;
 	 
 	// Gyro Port
 	public static final int GYRO_PORT = 0;
@@ -46,7 +50,11 @@ public class RobotMap {
 	//Digital Inputs
 	public final static int LIMIT_SWITCH_1 = 0;
 	public final static int LEFT_FRONT_ENC1 = 1;  
-	public final static int LEFT_FRONT_ENC2 = 2;  
+	public final static int LEFT_FRONT_ENC2 = 2;
+	
+	//LED ports
+	public final static int COLOR_CONTROLLER_PORT = 9;
+	public final static int LED_POWER_PORT = 3;
 	
 	// Angles
 	public final static double TURN_STOP_ANGLE = 70;
