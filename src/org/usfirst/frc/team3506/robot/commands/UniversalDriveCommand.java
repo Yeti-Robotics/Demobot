@@ -49,7 +49,6 @@ public class UniversalDriveCommand extends Command {
 		} else {
 			Robot.drive.rightTurn(speed);
 		}
-		System.out.println(-leftFront.getDistance());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

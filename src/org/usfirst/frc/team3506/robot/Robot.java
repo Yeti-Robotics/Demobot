@@ -3,13 +3,9 @@ package org.usfirst.frc.team3506.robot;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.usfirst.frc.team3506.robot.commands.DriveStraightCommand;
 import org.usfirst.frc.team3506.robot.commands.LoadRecordingCommand;
-import org.usfirst.frc.team3506.robot.commands.SaveRecordingCommand;
 import org.usfirst.frc.team3506.robot.commands.RecordCommand;
-import org.usfirst.frc.team3506.robot.commands.TestCommandGroup;
-import org.usfirst.frc.team3506.robot.commands.TurnLeftCommand;
-import org.usfirst.frc.team3506.robot.commands.TurnRightCommand;
+import org.usfirst.frc.team3506.robot.commands.UniversalDriveCommand;
 import org.usfirst.frc.team3506.robot.commands.UserDriveCommand;
 import org.usfirst.frc.team3506.robot.domain.RobotInput;
 import org.usfirst.frc.team3506.robot.subsystems.CompressorSubsystem;
@@ -62,13 +58,9 @@ public class Robot extends IterativeRobot {
 		ledSubsystem = new LEDSubsystem();
 		// this should be last
 		oi = new OI();
-
-		SmartDashboard.putData(new TurnRightCommand());
-		SmartDashboard.putData(new TurnLeftCommand());
-		SmartDashboard.putData(new DriveStraightCommand(2.0));
-		SmartDashboard.putData(new TestCommandGroup());
+		
+		SmartDashboard.putData(new UniversalDriveCommand(0, 0.5, 3));
 		SmartDashboard.putData(new RecordCommand());
-		SmartDashboard.putData(new SaveRecordingCommand());
 		SmartDashboard.putData(new LoadRecordingCommand());
 	}
 
@@ -114,13 +106,11 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		if (!playing) {
 			input = new RobotInput();
-			input.setButtonState(RobotInput.leftButtons, 3, oi.getLeftJoystick());
+			input.setButtonState(true, 10, oi.getLeftJoystick());
+			input.setButtonState(true, 4, oi.getLeftJoystick());
 			input.setLeftX(oi.getLeftX());
 			input.setLeftY(oi.getLeftY());
 			input.setRightX(oi.getRightX());
-//			input.setLeftButtonState3(oi.getLeftJoystick().getRawButton(3));
-//			input.setRightButtonState3(oi.getRightJoystick().getRawButton(3));
-//			input.setRightButtonState2(oi.getRightJoystick().getRawButton(2));
 		}
 		
 		if (recording) {

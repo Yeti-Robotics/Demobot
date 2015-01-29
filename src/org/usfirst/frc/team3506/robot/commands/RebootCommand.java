@@ -19,8 +19,7 @@ public class RebootCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		Scheduler.getInstance().disable();
-    		Scheduler.getInstance().enable();
+		Scheduler.getInstance().removeAll();
     		Scheduler.getInstance().add(new UserDriveCommand());
     }
 
