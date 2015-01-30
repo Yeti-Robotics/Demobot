@@ -2,6 +2,7 @@ package org.usfirst.frc.team3506.robot.subsystems;
 
 import org.usfirst.frc.team3506.robot.RobotMap;
 
+import edu.wpi.first.wpilibj.AnalogInput;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -15,13 +16,15 @@ public class SensorSubsystem extends Subsystem {
 	Gyro gyro;
 	Encoder leftFrontEncoder;
 	Encoder extraneousEncoder;
+	AnalogInput sonar;
 
 	public SensorSubsystem() {
-		gyro = new Gyro(RobotMap.GYRO_PORT);
+		gyro = new Gyro(1);
 		leftFrontEncoder = new Encoder(RobotMap.LEFT_FRONT_ENC1, RobotMap.LEFT_FRONT_ENC2);
 		leftFrontEncoder.setDistancePerPulse(RobotMap.DIST_PER_PULSE); //In feet
 		//leftFrontEncoder.setReverseDirection(true);
 		extraneousEncoder = new Encoder(3, 4);
+		sonar = new AnalogInput(0);
 	}
 
 	public void initDefaultCommand() {
@@ -60,5 +63,6 @@ public class SensorSubsystem extends Subsystem {
 		SmartDashboard.putNumber("Gyro Rate", gyro.getRate());
 		SmartDashboard.putData("Gyro", gyro);
 		SmartDashboard.putData("Encoder", leftFrontEncoder);
+		SmartDashboard.putNumber("Sonar", sonar.getVoltage());
 	}
 }
