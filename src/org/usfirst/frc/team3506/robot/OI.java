@@ -16,6 +16,7 @@ import org.usfirst.frc.team3506.robot.commands.TestCommandGroup;
 import org.usfirst.frc.team3506.robot.commands.ChangeLightSpeedCommand;
 import org.usfirst.frc.team3506.robot.commands.ToggleLightsCommand;
 import org.usfirst.frc.team3506.robot.commands.UniversalDriveCommand;
+import org.usfirst.frc.team3506.robot.domain.RobotInput;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -125,6 +126,13 @@ public class OI {
 	private void setJoystickButtonCommand(Joystick joystick, int button,
 			Command command) {
 		new JoystickButton(joystick, button).whenPressed(command);
+		if (leftJoy == joystick) {
+			RobotInput.leftCommands[button - 1] = command;
+		} else if (rightJoy == joystick) {
+			RobotInput.rightCommands[button - 1] = command;
+			
+		}
+		
 	}
 
 }

@@ -33,11 +33,11 @@ public class LoadRecordingCommand extends Command {
 			Robot.drive.userDrive();
 			if(!previousInput.getButtonState(true, 4) 
 					&& Robot.input.getButtonState(true, 4)) {
-				Scheduler.getInstance().add(new ToggleLightsCommand());
+				Scheduler.getInstance().add(RobotInput.leftCommands[4 - 1]);
 			}
 			if(!previousInput.getButtonState(true, 10) 
 					&& Robot.input.getButtonState(true, 10)) {
-				Scheduler.getInstance().add(new ChangeLightSpeedCommand());
+				Scheduler.getInstance().add(RobotInput.leftCommands[10 - 1]);
 			}
 		}
 		count++;
