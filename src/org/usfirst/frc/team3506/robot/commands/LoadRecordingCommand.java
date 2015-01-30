@@ -1,14 +1,17 @@
 package org.usfirst.frc.team3506.robot.commands;
 
 import org.usfirst.frc.team3506.robot.Robot;
+import org.usfirst.frc.team3506.robot.domain.RobotInput;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Scheduler;
 
 /**
  *
  */
 public class LoadRecordingCommand extends Command {
 	int count = 0;
+	RobotInput previousInput = new RobotInput();
 
 	public LoadRecordingCommand() {
 		// Use requires() here to declare subsystem dependencies
@@ -28,11 +31,17 @@ public class LoadRecordingCommand extends Command {
 			Robot.input = Robot.inputs.get(count);
 			System.out.println(Robot.input);
 			Robot.drive.userDrive();
-			Robot.input.executeButtonCommand(true, 10, new ChangeLightSpeedCommand());
-			Robot.input.executeButtonCommand(true, 4, new ToggleLightsCommand());
+			if(!previousInput.getButtonState(true, 4) 
+					&& Robot.input.getButtonState(true, 4)) {
+				Scheduler.getInstance().add(new ToggleLightsCommand());
+			}
+			if(!previousInput.getButtonState(true, 10) 
+					&& Robot.input.getButtonState(true, 10)) {
+				Scheduler.getInstance().add(new ChangeLightSpeedCommand());
+			}
 		}
 		count++;
-		
+		previousInput = Robot.input;
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

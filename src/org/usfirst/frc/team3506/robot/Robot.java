@@ -40,6 +40,7 @@ public class Robot extends IterativeRobot {
 	public static boolean recording = false;
 	public static boolean playing = false;
 	public static RobotInput input;
+//	public static RobotInput previousInput = new RobotInput();
 	public static List<RobotInput> inputs = new ArrayList<RobotInput>();
 	
 
@@ -135,5 +136,6 @@ public class Robot extends IterativeRobot {
 		solenoid2.log();
 		SmartDashboard.putBoolean("Recording:", recording);
 		SmartDashboard.putNumber("Input count:", inputs.size());
+		SmartDashboard.putBoolean("Left Button4", oi.getLeftJoystick().getRawButton(4));
 	}
 }
