@@ -3,6 +3,8 @@ package org.usfirst.frc.team3506.robot;
 import static org.usfirst.frc.team3506.robot.RobotMap.LEFT_JOYSTICK;
 import static org.usfirst.frc.team3506.robot.RobotMap.RIGHT_JOYSTICK;
 
+import org.usfirst.frc.team3506.robot.commands.DriveUntilObstacleCommand;
+import org.usfirst.frc.team3506.robot.commands.FollowCommand;
 import org.usfirst.frc.team3506.robot.commands.Piston1ForwardCommand;
 import org.usfirst.frc.team3506.robot.commands.Piston1ReverseCommand;
 import org.usfirst.frc.team3506.robot.commands.Piston2ForwardCommand;
@@ -62,34 +64,38 @@ public class OI {
 		leftJoy = new Joystick(LEFT_JOYSTICK);
 		rightJoy = new Joystick(RIGHT_JOYSTICK);
 		
-		//Piston 2 forward
-		setJoystickButtonCommand(leftJoy, 3, new Piston2ForwardCommand());
 		//Piston 2 reverse
 		setJoystickButtonCommand(leftJoy, 2, new Piston2ReverseCommand());
+		//Piston 2 forward
+		setJoystickButtonCommand(leftJoy, 3, new Piston2ForwardCommand());
+		//Toggle LEDs
+		setJoystickButtonCommand(leftJoy, 4, new ToggleLightsCommand());
 		//Failsafe
 		setJoystickButtonCommand(leftJoy, 7, new RebootCommand());
-		//Start recording
-		setJoystickButtonCommand(leftJoy, 11, new RecordCommand());
 		//Start the compressor
 		setJoystickButtonCommand(leftJoy, 8, new StartCompressorCommand());
 		//Stop the compressor
 		setJoystickButtonCommand(leftJoy, 9, new StopCompressorCommand());
 		//Change LED speed
 		setJoystickButtonCommand(leftJoy, 10, new ChangeLightSpeedCommand());
-		//Toggle LEDs
-		setJoystickButtonCommand(leftJoy, 4, new ToggleLightsCommand());
+		//Start recording
+		setJoystickButtonCommand(leftJoy, 11, new RecordCommand());
 		
-		//Piston 1 forward
-		setJoystickButtonCommand(rightJoy, 3, new Piston1ForwardCommand());
 		//Piston 1 reverse (not currently necessary)
 		setJoystickButtonCommand(rightJoy, 2, new Piston1ReverseCommand());
+		//Piston 1 forward
+		setJoystickButtonCommand(rightJoy, 3, new Piston1ForwardCommand());
+		//Sonar follow
+		setJoystickButtonCommand(rightJoy, 6, new FollowCommand());
+		//Drive until an object is encountered
+		setJoystickButtonCommand(rightJoy, 7, new DriveUntilObstacleCommand(0.15));
 		//Command group in development
 		setJoystickButtonCommand(rightJoy, 8, new TestCommandGroup());
 		//Reset the gyro
 		setJoystickButtonCommand(rightJoy, 10, new ResetGyroCommand());
 		//Testing universal drive command
-		setJoystickButtonCommand(rightJoy, 11, new UniversalDriveCommand(0, 0.5, 3));
 		setJoystickButtonCommand(rightJoy, 9, new UniversalDriveCommand(164, 0.2, 0));
+		setJoystickButtonCommand(rightJoy, 11, new UniversalDriveCommand(0, 0.5, 3));
 		
 		
 	}

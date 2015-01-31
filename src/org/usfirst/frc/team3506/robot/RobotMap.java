@@ -34,6 +34,9 @@ public class RobotMap {
 	public static final int JOYSTICK_THROTTLE = 2;
 	public static final int NUMBER_OF_RIGHT_JOYSTICK_BUTTONS = 11;
 	public static final int NUMBER_OF_LEFT_JOYSTICK_BUTTONS = 11;
+	
+	// Sonar port
+	public static final int SONAR_PORT = 1;
 	 
 	// Gyro Port
 	public static final int GYRO_PORT = 0;
@@ -49,7 +52,7 @@ public class RobotMap {
 	
 	//Digital Inputs
 	public final static int LIMIT_SWITCH_1 = 0;
-	public final static int LEFT_FRONT_ENC1 = 1;  
+	public final static int LEFT_FRONT_ENC1 = 1;
 	public final static int LEFT_FRONT_ENC2 = 2;
 	
 	//LED ports
