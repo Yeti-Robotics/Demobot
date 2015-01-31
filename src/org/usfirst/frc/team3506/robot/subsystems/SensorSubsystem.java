@@ -3,6 +3,7 @@ package org.usfirst.frc.team3506.robot.subsystems;
 import org.usfirst.frc.team3506.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -16,12 +17,15 @@ public class SensorSubsystem extends Subsystem {
 	Gyro gyro;
 	Encoder leftFrontEncoder;
 	AnalogInput sonar;
+	CameraServer cameraServer;
 
 	public SensorSubsystem() {
 		gyro = new Gyro(RobotMap.GYRO_PORT);
 		leftFrontEncoder = new Encoder(RobotMap.LEFT_FRONT_ENC1, RobotMap.LEFT_FRONT_ENC2);
 		leftFrontEncoder.setDistancePerPulse(RobotMap.DIST_PER_PULSE); //In feet
 		sonar = new AnalogInput(RobotMap.SONAR_PORT);
+		cameraServer = CameraServer.getInstance();
+		cameraServer.startAutomaticCapture("cam0");
 	}
 
 	public void initDefaultCommand() {
