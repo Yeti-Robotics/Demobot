@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.usfirst.frc.team3506.robot.commands.LoadRecordingCommand;
 import org.usfirst.frc.team3506.robot.commands.RecordCommand;
+import org.usfirst.frc.team3506.robot.commands.SaveRecordingCommand;
 import org.usfirst.frc.team3506.robot.commands.UniversalDriveCommand;
 import org.usfirst.frc.team3506.robot.commands.UserDriveCommand;
 import org.usfirst.frc.team3506.robot.domain.RobotInput;
@@ -15,11 +16,13 @@ import org.usfirst.frc.team3506.robot.subsystems.SensorSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.Solenoid1Subsystem;
 import org.usfirst.frc.team3506.robot.subsystems.Solenoid2Subsystem;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.vision.USBCamera;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -63,6 +66,9 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData(new UniversalDriveCommand(0, 0.5, 3));
 		SmartDashboard.putData(new RecordCommand());
 		SmartDashboard.putData(new LoadRecordingCommand());
+		SmartDashboard.putData(new SaveRecordingCommand());
+		
+		
 	}
 
 	public void disabledPeriodic() {
@@ -87,9 +93,9 @@ public class Robot extends IterativeRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		if (autonomousCommand != null)
+		if (autonomousCommand != null) {
 			autonomousCommand.cancel();
-		new UserDriveCommand().start();
+		}
 
 	}
 

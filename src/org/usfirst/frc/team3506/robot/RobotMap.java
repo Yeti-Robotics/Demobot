@@ -67,4 +67,7 @@ public class RobotMap {
 	public final static double TURN_LEFT_SPEED = -0.3;
 	public final static double FORWARD_SPEED = -0.5;
 	public final static double DIST_PER_PULSE = 0.006;	
+	
+	// File
+	public static final String COMMANDS_FILE = "/3506/commands.txt";
 }
