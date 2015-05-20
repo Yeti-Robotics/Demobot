@@ -6,9 +6,11 @@ package org.usfirst.frc.team3506.robot.subsystems;
 import static org.usfirst.frc.team3506.robot.RobotMap.*;
 
 import org.usfirst.frc.team3506.robot.Robot;
+import org.usfirst.frc.team3506.robot.RobotMap;
 import org.usfirst.frc.team3506.robot.commands.UserDriveCommand;
 
 import edu.wpi.first.wpilibj.Gyro;
+import edu.wpi.first.wpilibj.Joystick.AxisType;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -36,12 +38,15 @@ public class DriveSubsystem extends Subsystem {
 	protected void initDefaultCommand() {
 		setDefaultCommand(new UserDriveCommand());
 	}
-
+	
 	public void userDrive() {
-		mecanumDrive.mecanumDrive_Cartesian(Robot.oi.getLeftJoy().getX(),
-				Robot.oi.getLeftJoy().getY(), Robot.oi.getRightJoy().getX(),
-				gyro.getAngle());
+		mecanumDrive.mecanumDrive_Cartesian(Robot.oi.getGamepad().getX(), Robot.oi.getGamepad().getY(), Robot.oi.getGamepad().getRawAxis(RobotMap.ROTATION_AXIS), gyro.getAngle());
+		
 		resetGyro();
+	}
+	
+	public void automatedDrive(double x, double y, double rotation){
+		mecanumDrive.mecanumDrive_Cartesian(x, y, rotation, gyro.getAngle());
 	}
 
 	public void rightTurn() {

@@ -2,12 +2,12 @@ package org.usfirst.frc.team3506.robot;
 
 import static org.usfirst.frc.team3506.robot.RobotMap.LEFT_JOYSTICK;
 import static org.usfirst.frc.team3506.robot.RobotMap.RIGHT_JOYSTICK;
+import static org.usfirst.frc.team3506.robot.RobotMap.GAMEPAD_PORT;
 
-import org.usfirst.frc.team3506.robot.commands.Piston1ForwardCommand;
-import org.usfirst.frc.team3506.robot.commands.Piston1ReverseCommand;
-import org.usfirst.frc.team3506.robot.commands.Piston2ForwardCommand;
-import org.usfirst.frc.team3506.robot.commands.Piston2ReverseCommand;
+import org.usfirst.frc.team3506.robot.commands.LoadRecordingCommand;
 import org.usfirst.frc.team3506.robot.commands.RebootCommand;
+import org.usfirst.frc.team3506.robot.commands.RecordCommand;
+import org.usfirst.frc.team3506.robot.commands.SaveRecordingCommand;
 import org.usfirst.frc.team3506.robot.commands.TestCommandGroup;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -49,26 +49,41 @@ public class OI {
 
 	private Joystick leftJoy;
 	private Joystick rightJoy;
+	private Joystick gamepad;
 
 	public OI() {
-		leftJoy = new Joystick(LEFT_JOYSTICK);
-		rightJoy = new Joystick(RIGHT_JOYSTICK);
+		//leftJoy = new Joystick(LEFT_JOYSTICK);
+		//rightJoy = new Joystick(RIGHT_JOYSTICK);
+		gamepad = new Joystick(GAMEPAD_PORT);
 
-		setJoystickButtonCommand(leftJoy, 3, new Piston2ForwardCommand());
-		setJoystickButtonCommand(leftJoy, 2, new Piston2ReverseCommand());
-		setJoystickButtonCommand(leftJoy, 8, new RebootCommand());
-		
-		setJoystickButtonCommand(rightJoy, 3, new Piston1ForwardCommand());
-		setJoystickButtonCommand(rightJoy, 2, new Piston1ReverseCommand());
-		setJoystickButtonCommand(rightJoy, 8, new TestCommandGroup());
+		setJoystickButtonCommand(gamepad, 1, new RebootCommand());
+		setJoystickButtonCommand(gamepad, 3, new RecordCommand());
+		setJoystickButtonCommand(gamepad, 4, new SaveRecordingCommand());
+		setJoystickButtonCommand(gamepad, 2, new LoadRecordingCommand());
 	}
 
-	public Joystick getLeftJoy() {
+	/*public Joystick getLeftJoy() {
 		return leftJoy;
 	}
 
 	public Joystick getRightJoy() {
 		return rightJoy;
+	}
+	*/
+	public Joystick getGamepad(){
+		return gamepad;
+	}
+	
+	public double getGamepadX(){
+		return gamepad.getX();
+	}
+	
+	public double getGamepadY(){
+		return gamepad.getY();
+	}
+	
+	public double getGamepadAxis(int axis){
+		return gamepad.getRawAxis(axis);
 	}
 
 	private void setJoystickButtonCommand(Joystick joystick, int button,

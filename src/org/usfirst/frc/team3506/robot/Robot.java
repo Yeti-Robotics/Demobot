@@ -1,5 +1,8 @@
 package org.usfirst.frc.team3506.robot;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.usfirst.frc.team3506.robot.commands.DriveStraightCommand;
 import org.usfirst.frc.team3506.robot.commands.TestCommandGroup;
 import org.usfirst.frc.team3506.robot.commands.TurnLeftCommand;
@@ -7,10 +10,8 @@ import org.usfirst.frc.team3506.robot.commands.TurnRightCommand;
 import org.usfirst.frc.team3506.robot.commands.UserDriveCommand;
 import org.usfirst.frc.team3506.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.SensorSubsystem;
-import org.usfirst.frc.team3506.robot.subsystems.Solenoid1Subsystem;
-import org.usfirst.frc.team3506.robot.subsystems.Solenoid2Subsystem;
 
-import edu.wpi.first.wpilibj.Compressor;
+import domain.RobotInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -28,10 +29,12 @@ public class Robot extends IterativeRobot {
 
 	public static OI oi;
 	public static DriveSubsystem drive;
-	public static Solenoid1Subsystem solenoid1;
-	public static Solenoid2Subsystem solenoid2;
 	public static SensorSubsystem SensorSubsystem;
-	public static Compressor compressor;
+	public static boolean recording;
+	public static boolean playing;
+	public static List<RobotInput> inputs = new ArrayList<RobotInput>();
+	public static RobotInput input;
+	
 
 	Command autonomousCommand;
 
@@ -42,17 +45,12 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		SensorSubsystem = new SensorSubsystem();
 		drive = new DriveSubsystem();
-		solenoid1 = new Solenoid1Subsystem();
-		solenoid2 = new Solenoid2Subsystem();
-		compressor = new Compressor();
-		compressor.setClosedLoopControl(true);
-		// this should be last
+		recording = false;
+		playing = false;
+		
+		// oi should be last
 		oi = new OI();
 
-		SmartDashboard.putData(new TurnRightCommand());
-		SmartDashboard.putData(new TurnLeftCommand());
-		SmartDashboard.putData(new DriveStraightCommand(2.0));
-		SmartDashboard.putData(new TestCommandGroup());
 	}
 
 	public void disabledPeriodic() {
@@ -97,6 +95,17 @@ public class Robot extends IterativeRobot {
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
 		log();
+		if(!playing){
+			input = new RobotInput();
+			input.setButtonState(1, oi.getGamepad());
+			input.setX(oi.getGamepadX());
+			input.setY(oi.getGamepadY());
+			input.setRotation(oi.getGamepadAxis(RobotMap.ROTATION_AXIS));
+		}
+		
+		if(recording){
+			inputs.add(input);
+		}
 	}
 
 	/**
@@ -110,6 +119,5 @@ public class Robot extends IterativeRobot {
 	private void log() {
 		drive.log();
 		SensorSubsystem.log();
-		solenoid2.log();
 	}
 }
