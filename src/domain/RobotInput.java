@@ -17,7 +17,7 @@ public class RobotInput implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	double x, y, rotation;
+	double leftX, leftY, rotation;
 	//public boolean[] leftButtons = new boolean[RobotMap.NUMBER_OF_JOYSTICK_BUTTONS];
 	//public boolean[] rightButtons = new boolean[RobotMap.NUMBER_OF_JOYSTICK_BUTTONS];
 	//public static Command[] leftCommands = new Command[RobotMap.NUMBER_OF_JOYSTICK_BUTTONS];
@@ -61,20 +61,20 @@ public class RobotInput implements Serializable {
 				joystickAxisValue);
 	}
 
-	public double getX(){
-		return x;
+	public double getLeftX(){
+		return leftX;
 	}
 	
-	public double getY(){
-		return y;
+	public double getLeftY(){
+		return leftY;
 	}
 	
-	public void setX(double num){
-		x = num;
+	public void setLeftX(double num){
+		leftX = num;
 	}
 	
-	public void setY(double num){
-		y = num;
+	public void setLeftY(double num){
+		leftY = num;
 	}
 	
 	public double getRotation(){

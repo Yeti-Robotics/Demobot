@@ -1,12 +1,9 @@
 package org.usfirst.frc.team3506.robot;
 
 import java.util.ArrayList;
+import java.util.Hashtable;
 import java.util.List;
 
-import org.usfirst.frc.team3506.robot.commands.DriveStraightCommand;
-import org.usfirst.frc.team3506.robot.commands.TestCommandGroup;
-import org.usfirst.frc.team3506.robot.commands.TurnLeftCommand;
-import org.usfirst.frc.team3506.robot.commands.TurnRightCommand;
 import org.usfirst.frc.team3506.robot.commands.UserDriveCommand;
 import org.usfirst.frc.team3506.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.SensorSubsystem;
@@ -16,7 +13,6 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -98,14 +94,20 @@ public class Robot extends IterativeRobot {
 		if(!playing){
 			input = new RobotInput();
 			input.setButtonState(1, oi.getGamepad());
-			input.setX(oi.getGamepadX());
-			input.setY(oi.getGamepadY());
-			input.setRotation(oi.getGamepadAxis(RobotMap.ROTATION_AXIS));
+			input.setLeftX(oi.getGamepadLeftX());
+			input.setLeftY(oi.getGamepadLeftY());
+			input.setRotation(oi.getGamepadRightX());
 		}
 		
 		if(recording){
 			inputs.add(input);
 		}
+		
+//		for (int i = 0; i < 10; i++) {
+//			System.out.println("Button " + i + ": " + oi.getGamepad().getRawButton(i));
+//		}
+		
+		if ()
 	}
 
 	/**

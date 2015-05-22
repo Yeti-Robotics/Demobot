@@ -50,6 +50,8 @@ public class OI {
 	private Joystick leftJoy;
 	private Joystick rightJoy;
 	private Joystick gamepad;
+	
+	
 
 	public OI() {
 		//leftJoy = new Joystick(LEFT_JOYSTICK);
@@ -60,6 +62,9 @@ public class OI {
 		setJoystickButtonCommand(gamepad, 3, new RecordCommand());
 		setJoystickButtonCommand(gamepad, 4, new SaveRecordingCommand());
 		setJoystickButtonCommand(gamepad, 2, new LoadRecordingCommand());
+		
+		RobotMap.GAMEPAD_BUTTONS.put("start", 8);
+		RobotMap.GAMEPAD_BUTTONS.put("y", 4);
 	}
 
 	/*public Joystick getLeftJoy() {
@@ -74,21 +79,33 @@ public class OI {
 		return gamepad;
 	}
 	
-	public double getGamepadX(){
-		return gamepad.getX();
+	public double getGamepadLeftX(){
+		return getGamepadAxis(RobotMap.LEFT_ANALOG_X);
 	}
 	
-	public double getGamepadY(){
-		return gamepad.getY();
+	public double getGamepadLeftY(){
+		return getGamepadAxis(RobotMap.LEFT_ANALOG_Y);
+	}
+	
+	public double getGamepadRightX() {
+		return getGamepadAxis(RobotMap.RIGHT_ANALOG_X);
 	}
 	
 	public double getGamepadAxis(int axis){
-		return gamepad.getRawAxis(axis);
+		return joyMod(gamepad.getRawAxis(axis));
+	}
+	
+	public double joyMod(double joyVal) {
+		return joyVal * RobotMap.JOYSTICK_MOD;
 	}
 
 	private void setJoystickButtonCommand(Joystick joystick, int button,
 			Command command) {
 		new JoystickButton(joystick, button).whenPressed(command);
+	}
+	
+	public boolean getGamepadButton(String buttonName) {
+		
 	}
 
 }

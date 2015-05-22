@@ -40,7 +40,7 @@ public class DriveSubsystem extends Subsystem {
 	}
 	
 	public void userDrive() {
-		mecanumDrive.mecanumDrive_Cartesian(Robot.oi.getGamepad().getX(), Robot.oi.getGamepad().getY(), Robot.oi.getGamepad().getRawAxis(RobotMap.ROTATION_AXIS), gyro.getAngle());
+		mecanumDrive.mecanumDrive_Cartesian(Robot.oi.getGamepadLeftX(), -Robot.oi.getGamepadLeftY(), -Robot.oi.getGamepadRightX(), gyro.getAngle());
 		
 		resetGyro();
 	}

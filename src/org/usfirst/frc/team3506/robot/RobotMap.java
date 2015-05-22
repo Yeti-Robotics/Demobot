@@ -1,5 +1,7 @@
 package org.usfirst.frc.team3506.robot;
 
+import java.util.Hashtable;
+
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -21,8 +23,8 @@ public class RobotMap {
 	// Talon ports
 	public final static int LEFT_BACK_PORT = 3;
 	public final static int LEFT_FRONT_PORT = 0;
-	public final static int RIGHT_BACK_PORT = 1;
-	public final static int RIGHT_FRONT_PORT = 2;
+	public final static int RIGHT_BACK_PORT = 2;
+	public final static int RIGHT_FRONT_PORT = 1;
 	
 	
 	// Joystick ports
@@ -30,7 +32,13 @@ public class RobotMap {
 	public static final int RIGHT_JOYSTICK = 2;
 	public static final int GAMEPAD_PORT = 3;
 	
-	public static final int ROTATION_AXIS = 4;
+	public static final int LEFT_ANALOG_X = 0;
+	public static final int LEFT_ANALOG_Y = 4;
+	public static final int RIGHT_ANALOG_X = 1;
+	public static final double JOYSTICK_MOD = 0.5;
+	
+	//Joystick buttons
+	public static final Hashtable<String, Integer> GAMEPAD_BUTTONS = new Hashtable<String, Integer>();
 	
 	 // Gyro Port
 	public static final int GYRO_PORT = 0;

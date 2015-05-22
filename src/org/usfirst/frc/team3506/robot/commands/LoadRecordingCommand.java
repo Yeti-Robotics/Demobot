@@ -47,7 +47,7 @@ public class LoadRecordingCommand extends Command {
     	if(count < Robot.inputs.size()){
     		Robot.input = Robot.inputs.get(count);
     		System.out.println(Robot.input);
-    		Robot.drive.automatedDrive(Robot.input.getX(), Robot.input.getY(), Robot.input.getRotation());
+    		Robot.drive.automatedDrive(Robot.input.getLeftX(), Robot.input.getLeftY(), Robot.input.getRotation());
     		if(!previousInput.getButtonState(1) && Robot.input.getButtonState(1)){
     			Scheduler.getInstance().add(RobotInput.commands[1-1]);
     		}
