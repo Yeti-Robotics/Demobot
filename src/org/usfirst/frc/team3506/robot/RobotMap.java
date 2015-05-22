@@ -35,10 +35,20 @@ public class RobotMap {
 	public static final int LEFT_ANALOG_X = 0;
 	public static final int LEFT_ANALOG_Y = 4;
 	public static final int RIGHT_ANALOG_X = 1;
-	public static final double JOYSTICK_MOD = 0.5;
+	public static final double JOYSTICK_NORMAL_MOD = 0.75;
+	public static final double JOYSTICK_SAFE_MOD = 0.5;
 	
-	//Joystick buttons
-	public static final Hashtable<String, Integer> GAMEPAD_BUTTONS = new Hashtable<String, Integer>();
+	//Gamepad buttons
+	public static final int A_BUTTON = 0;
+	public static final int B_BUTTON = 0;
+	public static final int X_BUTTON = 0;
+	public static final int Y_BUTTON = 4;
+	public static final int LEFT_SHOULDER_BUTTON = 0;
+	public static final int RIGHT_SHOULDER_BUTTON = 0;
+	public static final int BACK_BUTTON = 0;
+	public static final int START_BUTTON = 8;
+	public static final int LEFT_STICK_BUTTON = 0;
+	public static final int RIGHT_BUTTON_BUTTON = 0;
 	
 	 // Gyro Port
 	public static final int GYRO_PORT = 0;

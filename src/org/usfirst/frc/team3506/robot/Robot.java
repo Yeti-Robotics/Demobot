@@ -30,6 +30,7 @@ public class Robot extends IterativeRobot {
 	public static boolean playing;
 	public static List<RobotInput> inputs = new ArrayList<RobotInput>();
 	public static RobotInput input;
+	public static boolean safeSpeed;
 	
 
 	Command autonomousCommand;
@@ -43,6 +44,7 @@ public class Robot extends IterativeRobot {
 		drive = new DriveSubsystem();
 		recording = false;
 		playing = false;
+		safeSpeed = false;
 		
 		// oi should be last
 		oi = new OI();
@@ -103,11 +105,12 @@ public class Robot extends IterativeRobot {
 			inputs.add(input);
 		}
 		
-//		for (int i = 0; i < 10; i++) {
-//			System.out.println("Button " + i + ": " + oi.getGamepad().getRawButton(i));
-//		}
+		for (int i = 0; i < 10; i++) {
+			if (oi.getGamepad().getRawButton(i)) {
+				System.out.println("Button " + i + ": " + oi.getGamepad().getRawButton(i));
+			}
+		}
 		
-		if ()
 	}
 
 	/**

@@ -9,6 +9,7 @@ import org.usfirst.frc.team3506.robot.commands.RebootCommand;
 import org.usfirst.frc.team3506.robot.commands.RecordCommand;
 import org.usfirst.frc.team3506.robot.commands.SaveRecordingCommand;
 import org.usfirst.frc.team3506.robot.commands.TestCommandGroup;
+import org.usfirst.frc.team3506.robot.commands.ToggleSpeedCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -58,13 +59,12 @@ public class OI {
 		//rightJoy = new Joystick(RIGHT_JOYSTICK);
 		gamepad = new Joystick(GAMEPAD_PORT);
 
-		setJoystickButtonCommand(gamepad, 1, new RebootCommand());
-		setJoystickButtonCommand(gamepad, 3, new RecordCommand());
-		setJoystickButtonCommand(gamepad, 4, new SaveRecordingCommand());
-		setJoystickButtonCommand(gamepad, 2, new LoadRecordingCommand());
+//		setJoystickButtonCommand(gamepad, 1, new RebootCommand());
+//		setJoystickButtonCommand(gamepad, 3, new RecordCommand());
+//		setJoystickButtonCommand(gamepad, 4, new SaveRecordingCommand());
+//		setJoystickButtonCommand(gamepad, 2, new LoadRecordingCommand());
 		
-		RobotMap.GAMEPAD_BUTTONS.put("start", 8);
-		RobotMap.GAMEPAD_BUTTONS.put("y", 4);
+		setJoystickButtonCommand(gamepad, RobotMap.Y_BUTTON, new ToggleSpeedCommand());
 	}
 
 	/*public Joystick getLeftJoy() {
@@ -96,16 +96,12 @@ public class OI {
 	}
 	
 	public double joyMod(double joyVal) {
-		return joyVal * RobotMap.JOYSTICK_MOD;
+		return joyVal * RobotMap.JOYSTICK_NORMAL_MOD;
 	}
 
 	private void setJoystickButtonCommand(Joystick joystick, int button,
 			Command command) {
 		new JoystickButton(joystick, button).whenPressed(command);
-	}
-	
-	public boolean getGamepadButton(String buttonName) {
-		
 	}
 
 }
