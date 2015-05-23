@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Arrays;
 
 import org.usfirst.frc.team3506.robot.RobotMap;
-import org.usfirst.frc.team3506.robot.commands.RebootCommand;
+import org.usfirst.frc.team3506.robot.commands.ClearScheduleCommand;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
@@ -26,7 +26,7 @@ public class RobotInput implements Serializable {
 	public static Command[] commands = new Command[10];
 	
 	public RobotInput(){
-		commands[0] = new RebootCommand();
+		commands[0] = new ClearScheduleCommand();
 	}
 	
 	/**

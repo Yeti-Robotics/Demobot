@@ -6,9 +6,9 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 /**
  *
  */
-public class RebootCommand extends Command {
+public class ClearScheduleCommand extends Command {
 
-    public RebootCommand() {
+    public ClearScheduleCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }

@@ -1,14 +1,8 @@
 package org.usfirst.frc.team3506.robot;
 
-import static org.usfirst.frc.team3506.robot.RobotMap.LEFT_JOYSTICK;
-import static org.usfirst.frc.team3506.robot.RobotMap.RIGHT_JOYSTICK;
 import static org.usfirst.frc.team3506.robot.RobotMap.GAMEPAD_PORT;
 
-import org.usfirst.frc.team3506.robot.commands.LoadRecordingCommand;
-import org.usfirst.frc.team3506.robot.commands.RebootCommand;
-import org.usfirst.frc.team3506.robot.commands.RecordCommand;
-import org.usfirst.frc.team3506.robot.commands.SaveRecordingCommand;
-import org.usfirst.frc.team3506.robot.commands.TestCommandGroup;
+import org.usfirst.frc.team3506.robot.commands.ClearScheduleCommand;
 import org.usfirst.frc.team3506.robot.commands.ToggleSpeedCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -59,7 +53,7 @@ public class OI {
 		//rightJoy = new Joystick(RIGHT_JOYSTICK);
 		gamepad = new Joystick(GAMEPAD_PORT);
 
-//		setJoystickButtonCommand(gamepad, 1, new RebootCommand());
+		setJoystickButtonCommand(gamepad, RobotMap.RIGHT_STICK_BUTTON, new ClearScheduleCommand());
 //		setJoystickButtonCommand(gamepad, 3, new RecordCommand());
 //		setJoystickButtonCommand(gamepad, 4, new SaveRecordingCommand());
 //		setJoystickButtonCommand(gamepad, 2, new LoadRecordingCommand());
