@@ -1,4 +1,4 @@
-package org.usfirst.frc.team3506.robot.commands;
+package org.usfirst.frc.team3506.robot.commands.recording;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;

@@ -1,15 +1,16 @@
-package org.usfirst.frc.team3506.robot.commands;
+package org.usfirst.frc.team3506.robot.commands.compressor;
+
+import org.usfirst.frc.team3506.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class UniversalDriveCommand extends Command {
+public class StopCompressorCommand extends Command {
 
-    public UniversalDriveCommand(double angle, double speed, double distance, boolean strafe) {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    public StopCompressorCommand() {
+        requires(Robot.compressorSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -18,11 +19,12 @@ public class UniversalDriveCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.compressorSubsystem.stopCompressor();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true

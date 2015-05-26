@@ -1,16 +1,13 @@
-package org.usfirst.frc.team3506.robot.commands;
-
-import org.usfirst.frc.team3506.robot.commands.drive.UserDriveCommand;
+package org.usfirst.frc.team3506.robot.commands.catapult;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Scheduler;
 
 /**
  *
  */
-public class RebootCommand extends Command {
+public class ArmCatapultCommand extends Command {
 
-    public RebootCommand() {
+    public ArmCatapultCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -21,14 +18,11 @@ public class RebootCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		Scheduler.getInstance().disable();
-    		Scheduler.getInstance().enable();
-    		Scheduler.getInstance().add(new UserDriveCommand());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true

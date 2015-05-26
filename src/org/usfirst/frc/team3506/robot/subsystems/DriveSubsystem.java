@@ -7,7 +7,7 @@ import static org.usfirst.frc.team3506.robot.RobotMap.*;
 
 import org.usfirst.frc.team3506.robot.Robot;
 import org.usfirst.frc.team3506.robot.RobotMap;
-import org.usfirst.frc.team3506.robot.commands.UserDriveCommand;
+import org.usfirst.frc.team3506.robot.commands.drive.UserDriveCommand;
 
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Joystick.AxisType;

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.usfirst.frc.team3506.robot.commands;
+package org.usfirst.frc.team3506.robot.commands.drive;
 
 import org.usfirst.frc.team3506.robot.Robot;
 
