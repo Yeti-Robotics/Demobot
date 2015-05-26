@@ -1,4 +1,4 @@
-package org.usfirst.frc.team3506.robot.commands;
+package org.usfirst.frc.team3506.robot.commands.drive;
 
 import org.usfirst.frc.team3506.robot.Robot;
 import org.usfirst.frc.team3506.robot.RobotMap;
@@ -9,11 +9,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class TurnRightCommand extends Command {
+public class TurnLeftCommand extends Command {
 	
 	Gyro gyro;
 
-	public TurnRightCommand() {
+	public TurnLeftCommand() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		requires(Robot.drive);
@@ -28,7 +28,7 @@ public class TurnRightCommand extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-			Robot.drive.rightTurn();
+		Robot.drive.leftTurn();
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

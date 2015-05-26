@@ -1,4 +1,4 @@
-package org.usfirst.frc.team3506.robot.commands;
+package org.usfirst.frc.team3506.robot.commands.drive;
 
 import org.usfirst.frc.team3506.robot.Robot;
 
@@ -7,12 +7,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class TestCommand extends Command {
+public class ToggleSpeedCommand extends Command {
 
-    public TestCommand() {
+    public ToggleSpeedCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    		requires(Robot.SensorSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -21,7 +20,7 @@ public class TestCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		Robot.SensorSubsystem.resetGyro();
+    	Robot.safeSpeed = !Robot.safeSpeed;
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -25,11 +25,12 @@ public class RobotMap {
 	public final static int LEFT_FRONT_PORT = 0;
 	public final static int RIGHT_BACK_PORT = 2;
 	public final static int RIGHT_FRONT_PORT = 1;
-	public final static int CATAPULT_TALON_PORT = 0;
+	public static final int CATAPULT_TALON_PORT = 0;
+	public static final double CATAPULT_ROLLER_SPEED = 1.0;
 	
 	//Pneumatics ports
-	public final static int[] CATAPULT_SOLENOID_1_PORT = {};
-	public final static int[] CATAPULT_SOLENOID_2_PORT = {};
+	public static final int PCM_ID = 0;
+	public static final int[] CATAPULT_SOLENOID = {};
 	
 	// Joystick ports
 	public static final int LEFT_JOYSTICK = 1;
@@ -68,5 +69,4 @@ public class RobotMap {
 	public final static double FORWARD_SPEED = -0.5;
 	
 	public static final String COMMANDS_FILE = "/3506/recording.txt";
-	
 }

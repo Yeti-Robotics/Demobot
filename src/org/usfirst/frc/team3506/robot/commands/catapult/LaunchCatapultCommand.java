@@ -1,18 +1,13 @@
-package org.usfirst.frc.team3506.robot.commands;
-
-import org.usfirst.frc.team3506.robot.commands.drive.UserDriveCommand;
+package org.usfirst.frc.team3506.robot.commands.catapult;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Scheduler;
 
 /**
  *
  */
-public class ClearScheduleCommand extends Command {
+public class LaunchCatapultCommand extends Command {
 
-    public ClearScheduleCommand() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    public LaunchCatapultCommand() {
     }
 
     // Called just before this Command runs the first time
@@ -21,9 +16,6 @@ public class ClearScheduleCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    		Scheduler.getInstance().disable();
-    		Scheduler.getInstance().enable();
-    		Scheduler.getInstance().add(new UserDriveCommand());
     }
 
     // Make this return true when this Command no longer needs to run execute()

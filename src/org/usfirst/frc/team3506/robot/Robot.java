@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
-import org.usfirst.frc.team3506.robot.commands.UserDriveCommand;
+import org.usfirst.frc.team3506.robot.commands.drive.UserDriveCommand;
+import org.usfirst.frc.team3506.robot.subsystems.CatapultSubsystem;
+import org.usfirst.frc.team3506.robot.subsystems.CompressorSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.DriveSubsystem;
 import org.usfirst.frc.team3506.robot.subsystems.SensorSubsystem;
 
@@ -31,6 +33,8 @@ public class Robot extends IterativeRobot {
 	public static List<RobotInput> inputs = new ArrayList<RobotInput>();
 	public static RobotInput input;
 	public static boolean safeSpeed;
+	public static CompressorSubsystem compressorSubsystem;
+	public static CatapultSubsystem catapultSubsystem;
 	
 
 	Command autonomousCommand;
@@ -45,6 +49,8 @@ public class Robot extends IterativeRobot {
 		recording = false;
 		playing = false;
 		safeSpeed = false;
+		compressorSubsystem = new CompressorSubsystem();
+		catapultSubsystem = new CatapultSubsystem();
 		
 		// oi should be last
 		oi = new OI();
