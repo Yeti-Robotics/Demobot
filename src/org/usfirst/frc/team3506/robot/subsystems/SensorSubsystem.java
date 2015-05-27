@@ -12,8 +12,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class SensorSubsystem extends Subsystem {
 
-	Gyro gyro;
-	Encoder leftFrontEncoder;
+	private Gyro gyro;
+	private Encoder leftFrontEncoder;
 
 	public SensorSubsystem() {
 		gyro = new Gyro(RobotMap.GYRO_PORT);

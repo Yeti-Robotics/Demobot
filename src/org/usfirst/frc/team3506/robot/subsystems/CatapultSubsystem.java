@@ -11,8 +11,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class CatapultSubsystem extends Subsystem {
-    DoubleSolenoid catapultPiston;
-    Talon catapultTalon;
+    private DoubleSolenoid catapultPiston;
+    private Talon catapultTalon;
     
     public CatapultSubsystem() {
     	catapultPiston = new DoubleSolenoid(RobotMap.CATAPULT_SOLENOID[0], RobotMap.CATAPULT_SOLENOID[1]);

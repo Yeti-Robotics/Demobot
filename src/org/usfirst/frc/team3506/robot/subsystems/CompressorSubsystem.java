@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class CompressorSubsystem extends Subsystem {
     
-	Compressor compressor;
+	private Compressor compressor;
 
 	public CompressorSubsystem() {
 		compressor = new Compressor(RobotMap.PCM_ID);

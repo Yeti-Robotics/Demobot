@@ -20,8 +20,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class DriveSubsystem extends Subsystem {
 
-	RobotDrive mecanumDrive;
-	Gyro gyro;
+	private RobotDrive mecanumDrive;
+	private Gyro gyro;
 
 	public DriveSubsystem() {
 		gyro = Robot.SensorSubsystem.getGyro();
