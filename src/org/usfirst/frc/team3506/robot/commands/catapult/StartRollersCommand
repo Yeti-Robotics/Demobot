@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class StartCompressorCommand extends Command {
+public class StartRollersCommand extends Command {
 
-    public StartCompressorCommand() {
+    public StartRollersCommand() {
         requires(Robot.catapultSubsystem);
     }
 
