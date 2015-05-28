@@ -1,4 +1,4 @@
-package org.usfirst.frc.team3506.robot.commands.compressor;
+package org.usfirst.frc.team3506.robot.commands.catapult;
 
 import org.usfirst.frc.team3506.robot.Robot;
 
