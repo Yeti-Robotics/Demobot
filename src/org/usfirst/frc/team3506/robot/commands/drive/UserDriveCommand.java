@@ -30,7 +30,12 @@ public class UserDriveCommand extends Command {
 	 */
 	@Override
 	protected void execute() {
-		Robot.drive.userDrive();
+		if(Robot.safeSpeed) {
+			Robot.drive.userSafeDrive();
+		}
+		else {
+			Robot.drive.userDrive();
+		}
 	}
 
 	/* (non-Javadoc)
