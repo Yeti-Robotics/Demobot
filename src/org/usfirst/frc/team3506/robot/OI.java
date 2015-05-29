@@ -1,6 +1,6 @@
 package org.usfirst.frc.team3506.robot;
 
-import static org.usfirst.frc.team3506.robot.RobotMap.GAMEPAD_PORT;
+import static org.usfirst.frc.team3506.robot.RobotMap;
 
 import org.usfirst.frc.team3506.robot.commands.ClearScheduleCommand;
 import org.usfirst.frc.team3506.robot.commands.drive.ToggleSpeedCommand;
@@ -21,7 +21,7 @@ public class OI {
 	public OI() {
 		//leftJoy = new Joystick(LEFT_JOYSTICK);
 		//rightJoy = new Joystick(RIGHT_JOYSTICK);
-		gamepad = new Joystick(GAMEPAD_PORT);
+		gamepad = new Joystick(RobotMap.GAMEPAD_PORT);
 
 		setJoystickButtonCommand(gamepad, RobotMap.RIGHT_STICK_BUTTON, new ClearScheduleCommand());
 //		setJoystickButtonCommand(gamepad, 3, new RecordCommand());
@@ -60,7 +60,12 @@ public class OI {
 	}
 	
 	public double joyMod(double joyVal) {
-		return joyVal * RobotMap.JOYSTICK_NORMAL_MOD;
+		if(joyVal >= RobotMap.JOYSTICK_DEADZONE) {
+			return joyVal * RobotMap.JOYSTICK_NORMAL_MOD;
+		}
+		else {
+			return 0;
+		}
 	}
 
 	private void setJoystickButtonCommand(Joystick joystick, int button,
