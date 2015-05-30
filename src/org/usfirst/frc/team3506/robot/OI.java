@@ -3,6 +3,11 @@ package org.usfirst.frc.team3506.robot;
 import static org.usfirst.frc.team3506.robot.RobotMap.GAMEPAD_PORT;
 
 import org.usfirst.frc.team3506.robot.commands.ClearScheduleCommand;
+import org.usfirst.frc.team3506.robot.commands.catapult.ArmCatapultCommand;
+import org.usfirst.frc.team3506.robot.commands.catapult.LaunchCatapultCommand;
+import org.usfirst.frc.team3506.robot.commands.catapult.ReverseRollerCommand;
+import org.usfirst.frc.team3506.robot.commands.catapult.StartRollersCommand;
+import org.usfirst.frc.team3506.robot.commands.catapult.StopRollersCommand;
 import org.usfirst.frc.team3506.robot.commands.drive.ToggleSpeedCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -14,8 +19,8 @@ import edu.wpi.first.wpilibj.command.Command;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-	private Joystick leftJoy;
-	private Joystick rightJoy;
+	//private Joystick leftJoy;
+	//private Joystick rightJoy;
 	private Joystick gamepad;
 	
 	public OI() {
@@ -29,6 +34,11 @@ public class OI {
 //		setJoystickButtonCommand(gamepad, 2, new LoadRecordingCommand());
 		
 		setJoystickButtonCommand(gamepad, RobotMap.Y_BUTTON, new ToggleSpeedCommand());
+		//setJoystickButtonCommand(gamepad, RobotMap.START_BUTTON, new ReverseRollerCommand());
+		setJoystickButtonCommand(gamepad, RobotMap.A_BUTTON, new StartRollersCommand());
+		//setJoystickButtonCommand(gamepad, RobotMap.B_BUTTON, new StopRollersCommand());
+		setJoystickButtonCommand(gamepad, RobotMap.LEFT_SHOULDER_BUTTON, new LaunchCatapultCommand());
+		setJoystickButtonCommand(gamepad, RobotMap.RIGHT_SHOULDER_BUTTON, new ArmCatapultCommand());
 	}
 
 	/*public Joystick getLeftJoy() {
@@ -60,7 +70,12 @@ public class OI {
 	}
 	
 	public double joyMod(double joyVal) {
-		return joyVal * RobotMap.JOYSTICK_NORMAL_MOD;
+		if(Math.abs(joyVal)<=0.05){
+			return 0;
+		} else{
+			return joyVal*RobotMap.JOYSTICK_NORMAL_MOD;
+		}
+		//return joyVal * RobotMap.JOYSTICK_NORMAL_MOD;
 	}
 
 	private void setJoystickButtonCommand(Joystick joystick, int button,

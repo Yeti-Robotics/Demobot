@@ -25,12 +25,13 @@ public class RobotMap {
 	public final static int LEFT_FRONT_PORT = 0;
 	public final static int RIGHT_BACK_PORT = 2;
 	public final static int RIGHT_FRONT_PORT = 1;
-	public static final int CATAPULT_TALON_PORT = 0;
+	public static final int CATAPULT_TALON_PORT = 4;
 	public static final double CATAPULT_ROLLER_SPEED = 1.0;
 	
 	//Pneumatics ports
 	public static final int PCM_ID = 0;
-	public static final int[] CATAPULT_SOLENOID = {};
+	public static final int[] CATAPULT_SOLENOID = {0,1};
+	public static final int[] CATAPULT_SOLENOID2 = {4,5}; // double check?
 	
 	// Joystick ports
 	public static final int LEFT_JOYSTICK = 1;

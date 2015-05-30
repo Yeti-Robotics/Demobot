@@ -33,6 +33,7 @@ public class Robot extends IterativeRobot {
 	public static List<RobotInput> inputs = new ArrayList<RobotInput>();
 	public static RobotInput input;
 	public static boolean safeSpeed;
+	public static boolean rollersOn;
 	public static CompressorSubsystem compressorSubsystem;
 	public static CatapultSubsystem catapultSubsystem;
 	
@@ -49,6 +50,7 @@ public class Robot extends IterativeRobot {
 		recording = false;
 		playing = false;
 		safeSpeed = false;
+		rollersOn = false;
 		compressorSubsystem = new CompressorSubsystem();
 		catapultSubsystem = new CatapultSubsystem();
 		
@@ -111,7 +113,7 @@ public class Robot extends IterativeRobot {
 			inputs.add(input);
 		}
 		
-		for (int i = 0; i < 10; i++) {
+		for (int i = 1; i < 10; i++) {
 			if (oi.getGamepad().getRawButton(i)) {
 				System.out.println("Button " + i + ": " + oi.getGamepad().getRawButton(i));
 			}

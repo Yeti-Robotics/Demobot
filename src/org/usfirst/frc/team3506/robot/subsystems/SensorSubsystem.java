@@ -13,11 +13,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class SensorSubsystem extends Subsystem {
 
 	private Gyro gyro;
-	private Encoder leftFrontEncoder;
+	//private Encoder leftFrontEncoder;
 
 	public SensorSubsystem() {
 		gyro = new Gyro(RobotMap.GYRO_PORT);
-		leftFrontEncoder = new Encoder(1, 2);
+		//leftFrontEncoder = new Encoder(1, 2);
 	}
 
 	public void initDefaultCommand() {
@@ -31,7 +31,7 @@ public class SensorSubsystem extends Subsystem {
 	public void resetGyro() {
 		gyro.reset();
 	}
-
+	/*
 	public Encoder getEncoder() {
 		return leftFrontEncoder;
 	}
@@ -39,16 +39,16 @@ public class SensorSubsystem extends Subsystem {
 	public void resetEncoder(){
     	leftFrontEncoder.reset();
     }
-	
+	*/
 	public void resetAll(){
 		resetGyro();
-		resetEncoder();
+		//resetEncoder();
 	}
 
 	public void log() {
 		SmartDashboard.putNumber("Gyro Angle", gyro.getAngle());
 		SmartDashboard.putNumber("Gyro Rate", gyro.getRate());
 		SmartDashboard.putData("Gyro", gyro);
-		SmartDashboard.putData("Encoder", leftFrontEncoder);
+		//SmartDashboard.putData("Encoder", leftFrontEncoder);
 	}
 }
