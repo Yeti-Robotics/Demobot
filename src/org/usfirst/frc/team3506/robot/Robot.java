@@ -110,13 +110,6 @@ public class Robot extends IterativeRobot {
 		if(recording){
 			inputs.add(input);
 		}
-		
-		for (int i = 1; i < 10; i++) {
-			if (oi.getGamepad().getRawButton(i)) {
-				System.out.println("Button " + i + ": " + oi.getGamepad().getRawButton(i));
-			}
-		}
-		
 	}
 
 	/**
