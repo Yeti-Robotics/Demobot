@@ -40,19 +40,20 @@ public class DriveSubsystem extends Subsystem {
 	}
 
 	public void userDrive() {
-		if (Robot.safeSpeed) {
-			mecanumDrive.mecanumDrive_Cartesian(
-					(Robot.oi.getGamepadLeftX() / RobotMap.JOYSTICK_NORMAL_MOD)
-							* RobotMap.JOYSTICK_SAFE_MOD,
-					-(Robot.oi.getGamepadLeftY() / RobotMap.JOYSTICK_NORMAL_MOD)
-							* RobotMap.JOYSTICK_SAFE_MOD,
-					-(Robot.oi.getGamepadRightX() / RobotMap.JOYSTICK_NORMAL_MOD)
-							* RobotMap.JOYSTICK_SAFE_MOD, gyro.getAngle());
-		} else {
-			mecanumDrive.mecanumDrive_Cartesian(Robot.oi.getGamepadLeftX(),
-					-Robot.oi.getGamepadLeftY(), -Robot.oi.getGamepadRightX(),
-					gyro.getAngle());
-		}
+		mecanumDrive.mecanumDrive_Cartesian(
+			(Robot.oi.getGamepadLeftX() * RobotMap.JOYSTICK_NORMAL_MOD),
+			-(Robot.oi.getGamepadLeftY() * RobotMap.JOYSTICK_NORMAL_MOD),
+			-(Robot.oi.getGamepadRightX() * RobotMap.JOYSTICK_NORMAL_MOD),
+			gyro.getAngle());
+		resetGyro();
+	}
+	
+	public void userSafeDrive() {
+		mecanumDrive.mecanumDrive_Cartesian(
+			(Robot.oi.getGamepadLeftX() * RobotMap.JOYSTICK_SAFE_MOD),
+			-(Robot.oi.getGamepadLeftY() * RobotMap.JOYSTICK_SAFE_MOD),
+			-(Robot.oi.getGamepadRightX() * RobotMap.JOYSTICK_SAFE_MOD),
+			gyro.getAngle());\
 		resetGyro();
 	}
 
