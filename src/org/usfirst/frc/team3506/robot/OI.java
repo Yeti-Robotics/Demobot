@@ -3,6 +3,9 @@ package org.usfirst.frc.team3506.robot;
 import static org.usfirst.frc.team3506.robot.RobotMap;
 
 import org.usfirst.frc.team3506.robot.commands.ClearScheduleCommand;
+import org.usfirst.frc.team3506.robot.commands.catapult.ArmCatapultCommand;
+import org.usfirst.frc.team3506.robot.commands.catapult.LaunchCatapultCommand;
+import org.usfirst.frc.team3506.robot.commands.catapult.StartRollersCommand;
 import org.usfirst.frc.team3506.robot.commands.drive.ToggleSpeedCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -27,8 +30,11 @@ public class OI {
 //		setJoystickButtonCommand(gamepad, 3, new RecordCommand());
 //		setJoystickButtonCommand(gamepad, 4, new SaveRecordingCommand());
 //		setJoystickButtonCommand(gamepad, 2, new LoadRecordingCommand());
-		
+		setJoystickButtonCommand(gamepad, RobotMap.A_BUTTON, new StartRollersCommand());
 		setJoystickButtonCommand(gamepad, RobotMap.Y_BUTTON, new ToggleSpeedCommand());
+		
+		setJoystickButtonCommand(gamepad, RobotMap.LEFT_SHOULDER_BUTTON, new LaunchCatapultCommand());
+		setJoystickButtonCommand(gamepad, RobotMap.RIGHT_SHOULDER_BUTTON, new ArmCatapultCommand());
 	}
 
 	/*public Joystick getLeftJoy() {
