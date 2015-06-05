@@ -65,7 +65,7 @@ public class OI {
 	}
 	
 	public double joyMod(double joyVal) {
-		if(joyVal >= RobotMap.JOYSTICK_DEADZONE) {
+		if(Math.abs(joyVal) >= RobotMap.JOYSTICK_DEADZONE) {
 			return joyVal;
 		}
 		else {
