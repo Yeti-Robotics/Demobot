@@ -1,7 +1,6 @@
 package org.usfirst.frc.team3506.robot;
 
-import static org.usfirst.frc.team3506.robot.RobotMap;
-
+import org.usfirst.frc.team3506.robot.RobotMap;
 import org.usfirst.frc.team3506.robot.commands.ClearScheduleCommand;
 import org.usfirst.frc.team3506.robot.commands.catapult.ArmCatapultCommand;
 import org.usfirst.frc.team3506.robot.commands.catapult.LaunchCatapultCommand;
