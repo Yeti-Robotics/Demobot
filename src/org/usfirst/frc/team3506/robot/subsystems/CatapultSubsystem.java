@@ -36,7 +36,7 @@ public class CatapultSubsystem extends Subsystem {
     }
     
     public void reverseRollers() {
-    	catapultTalon.set(-RobotMap.CATAPULT_ROLLER_SPEED);
+    	catapultTalon.set(-RobotMap.CATAPULT_ROLLER_SPEED/3.0);
     }
     
     public void deactivateRollers() {

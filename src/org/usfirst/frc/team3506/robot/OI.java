@@ -4,9 +4,11 @@ import static org.usfirst.frc.team3506.robot.RobotMap.GAMEPAD_PORT;
 
 import org.usfirst.frc.team3506.robot.commands.ClearScheduleCommand;
 import org.usfirst.frc.team3506.robot.commands.catapult.ArmCatapultCommand;
+import org.usfirst.frc.team3506.robot.commands.catapult.ForwardRollersCommand;
 import org.usfirst.frc.team3506.robot.commands.catapult.LaunchCatapultCommand;
 import org.usfirst.frc.team3506.robot.commands.catapult.ReverseRollerCommand;
-import org.usfirst.frc.team3506.robot.commands.catapult.StartRollersCommand;
+import org.usfirst.frc.team3506.robot.commands.catapult.ToggleRollerDirectionCommand;
+import org.usfirst.frc.team3506.robot.commands.catapult.ToggleRollersCommand;
 import org.usfirst.frc.team3506.robot.commands.catapult.StopRollersCommand;
 import org.usfirst.frc.team3506.robot.commands.drive.ToggleSpeedCommand;
 
@@ -35,8 +37,10 @@ public class OI {
 		
 		setJoystickButtonCommand(gamepad, RobotMap.Y_BUTTON, new ToggleSpeedCommand());
 		//setJoystickButtonCommand(gamepad, RobotMap.START_BUTTON, new ReverseRollerCommand());
-		setJoystickButtonCommand(gamepad, RobotMap.A_BUTTON, new StartRollersCommand());
+		setJoystickButtonCommand(gamepad, RobotMap.A_BUTTON, new ForwardRollersCommand());
+		
 		//setJoystickButtonCommand(gamepad, RobotMap.B_BUTTON, new StopRollersCommand());
+		setJoystickButtonCommand(gamepad, RobotMap.B_BUTTON, new ReverseRollerCommand());
 		setJoystickButtonCommand(gamepad, RobotMap.LEFT_SHOULDER_BUTTON, new LaunchCatapultCommand());
 		setJoystickButtonCommand(gamepad, RobotMap.RIGHT_SHOULDER_BUTTON, new ArmCatapultCommand());
 	}

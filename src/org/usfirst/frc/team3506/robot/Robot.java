@@ -34,6 +34,7 @@ public class Robot extends IterativeRobot {
 	public static RobotInput input;
 	public static boolean safeSpeed;
 	public static boolean rollersOn;
+	public static boolean rollerDirection;
 	public static CompressorSubsystem compressorSubsystem;
 	public static CatapultSubsystem catapultSubsystem;
 	
@@ -51,6 +52,7 @@ public class Robot extends IterativeRobot {
 		playing = false;
 		safeSpeed = false;
 		rollersOn = false;
+		rollerDirection = true;
 		compressorSubsystem = new CompressorSubsystem();
 		catapultSubsystem = new CatapultSubsystem();
 		

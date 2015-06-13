@@ -36,7 +36,12 @@ public class UserDriveCommand extends Command {
 			Robot.drive.safeDrive();
 		}
 		if(Robot.rollersOn){
-			Robot.catapultSubsystem.activateRollers();
+			if(Robot.rollerDirection){
+				Robot.catapultSubsystem.activateRollers();
+			} else{
+				Robot.catapultSubsystem.reverseRollers();
+			}
+			
 		}else{
 			Robot.catapultSubsystem.deactivateRollers();
 		}

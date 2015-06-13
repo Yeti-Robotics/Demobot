@@ -7,34 +7,36 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ReverseRollerCommand extends Command {
+public class OperateRollersCommand extends Command {
 
-    public ReverseRollerCommand() {
+    public OperateRollersCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.catapultSubsystem); //!
     	
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() {   	
+    protected void initialize() {
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.rollersOn && Robot.rollerDirection){
-    		Robot.rollersOn = true;
-    	} else if(!Robot.rollersOn){
-    		Robot.rollersOn = true;
-    	} else{
-    		Robot.rollersOn = false;
-    	}
-    	Robot.rollerDirection = false;
-
+    	if(Robot.rollersOn){
+			if(Robot.rollerDirection){
+				Robot.catapultSubsystem.activateRollers();
+			} else{
+				Robot.catapultSubsystem.reverseRollers();
+			}
+			
+		}else{
+			Robot.catapultSubsystem.deactivateRollers();
+		}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true
@@ -44,6 +46,5 @@ public class ReverseRollerCommand extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }
