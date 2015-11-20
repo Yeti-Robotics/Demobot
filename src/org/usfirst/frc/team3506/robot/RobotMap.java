@@ -39,7 +39,7 @@ public class RobotMap {
 	public static final int GAMEPAD_PORT = 3;
 	
 	public static final int LEFT_ANALOG_X = 0;
-	public static final int LEFT_ANALOG_Y = 4;
+	public static final int LEFT_ANALOG_Y = 2;
 	public static final int RIGHT_ANALOG_X = 1;
 	public static final double JOYSTICK_NORMAL_MOD = 1.0;
 	public static final double JOYSTICK_SAFE_MOD = 0.3;
