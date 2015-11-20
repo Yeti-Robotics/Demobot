@@ -1,20 +1,19 @@
 /**
  * 
  */
-package org.usfirst.frc.team3506.robot.commands;
+package org.usfirst.frc.team3506.robot.commands.drive;
 
 import org.usfirst.frc.team3506.robot.Robot;
-import org.usfirst.frc.team3506.robot.subsystems.DriveSubsystem;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * @author acampbell
  *
  */
-public class Turn360Command extends Command {
-	public Turn360Command() {
+public class UserDriveCommand extends Command {
+
+	public UserDriveCommand() {
 		requires(Robot.drive);
 	}
 	
@@ -23,7 +22,7 @@ public class Turn360Command extends Command {
 	 */
 	@Override
 	protected void initialize() {
-		Robot.drive.resetGyro();
+
 	}
 
 	/* (non-Javadoc)
@@ -31,7 +30,21 @@ public class Turn360Command extends Command {
 	 */
 	@Override
 	protected void execute() {
-		Robot.drive.rightTurn();
+		if(!Robot.safeSpeed){
+			Robot.drive.userDrive();
+		} else{
+			Robot.drive.safeDrive();
+		}
+		if(Robot.rollersOn){
+			if(Robot.rollerDirection){
+				Robot.catapultSubsystem.activateRollers();
+			} else{
+				Robot.catapultSubsystem.reverseRollers();
+			}
+			
+		}else{
+			Robot.catapultSubsystem.deactivateRollers();
+		}
 	}
 
 	/* (non-Javadoc)
@@ -39,11 +52,7 @@ public class Turn360Command extends Command {
 	 */
 	@Override
 	protected boolean isFinished() {
-		if(Math.abs(Robot.drive.getGyroAngle())>=310){
-			return true;
-		} else{
-			return false;
-		}
+		return false;
 	}
 
 	/* (non-Javadoc)

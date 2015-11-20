@@ -1,34 +1,30 @@
-package org.usfirst.frc.team3506.robot.commands;
+package org.usfirst.frc.team3506.robot.commands.catapult;
 
 import org.usfirst.frc.team3506.robot.Robot;
-import org.usfirst.frc.team3506.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class TurnRightCommand extends Command {
+public class LaunchCatapultCommand extends Command {
 
-    public TurnRightCommand() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(Robot.drive);
+    public LaunchCatapultCommand() {
+        requires(Robot.catapultSubsystem);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	setTimeout(RobotMap.TURN_TIMEOUT);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.drive.rightTurn();
+        Robot.catapultSubsystem.retractPiston();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return isTimedOut();
+        return true;
     }
 
     // Called once after isFinished returns true
@@ -38,6 +34,5 @@ public class TurnRightCommand extends Command {
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-    	end();
     }
 }

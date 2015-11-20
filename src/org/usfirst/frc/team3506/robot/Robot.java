@@ -1,9 +1,16 @@
-
 package org.usfirst.frc.team3506.robot;
 
-import org.usfirst.frc.team3506.robot.commands.DriveCommand;
-import org.usfirst.frc.team3506.robot.subsystems.DriveSubsystem;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
 
+import org.usfirst.frc.team3506.robot.commands.drive.UserDriveCommand;
+import org.usfirst.frc.team3506.robot.subsystems.CatapultSubsystem;
+import org.usfirst.frc.team3506.robot.subsystems.CompressorSubsystem;
+import org.usfirst.frc.team3506.robot.subsystems.DriveSubsystem;
+import org.usfirst.frc.team3506.robot.subsystems.SensorSubsystem;
+
+import domain.RobotInput;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -20,70 +27,112 @@ public class Robot extends IterativeRobot {
 
 	public static OI oi;
 	public static DriveSubsystem drive;
-
-    Command autonomousCommand;
-
-    /**
-     * This function is run when the robot is first started up and should be
-     * used for any initialization code.
-     */
-    public void robotInit() {
-    	drive = new DriveSubsystem();
-		oi = new OI();
-        // instantiate the command used for the autonomous period
-//        autonomousCommand = new ExampleCommand();
-    }
+	public static SensorSubsystem SensorSubsystem;
+	public static boolean recording;
+	public static boolean playing;
+	public static List<RobotInput> inputs = new ArrayList<RobotInput>();
+	public static RobotInput input;
+	public static boolean safeSpeed;
+	public static boolean rollersOn;
+	public static boolean rollerDirection;
+	public static CompressorSubsystem compressorSubsystem;
+	public static CatapultSubsystem catapultSubsystem;
 	
+
+	Command autonomousCommand;
+
+	/**
+	 * This function is run when the robot is first started up and should be
+	 * used for any initialization code.
+	 */
+	public void robotInit() {
+		SensorSubsystem = new SensorSubsystem();
+		drive = new DriveSubsystem();
+		recording = false;
+		playing = false;
+		safeSpeed = false;
+		rollersOn = false;
+		rollerDirection = true;
+		compressorSubsystem = new CompressorSubsystem();
+		catapultSubsystem = new CatapultSubsystem();
+		
+		// oi should be last
+		oi = new OI();
+
+	}
+
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 	}
 
-    public void autonomousInit() {
-        // schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
-    }
+	public void autonomousInit() {
+		// schedule the autonomous command (example)
+		if (autonomousCommand != null)
+			autonomousCommand.start();
+	}
 
-    /**
-     * This function is called periodically during autonomous
-     */
-    public void autonomousPeriodic() {
-        Scheduler.getInstance().run();
-    }
+	/**
+	 * This function is called periodically during autonomous
+	 */
+	public void autonomousPeriodic() {
+		Scheduler.getInstance().run();
+	}
 
-    public void teleopInit() {
+	public void teleopInit() {
 		// This makes sure that the autonomous stops running when
-        // teleop starts running. If you want the autonomous to 
-        // continue until interrupted by another command, remove
-        // this line or comment it out.
-        if (autonomousCommand != null) autonomousCommand.cancel();
-        new DriveCommand().start();
-        
-    }
+		// teleop starts running. If you want the autonomous to
+		// continue until interrupted by another command, remove
+		// this line or comment it out.
+		if (autonomousCommand != null)
+			autonomousCommand.cancel();
+		new UserDriveCommand().start();
 
-    /**
-     * This function is called when the disabled button is hit.
-     * You can use it to reset subsystems before shutting down.
-     */
-    public void disabledInit(){
+	}
 
-    }
+	/**
+	 * This function is called when the disabled button is hit. You can use it
+	 * to reset subsystems before shutting down.
+	 */
+	public void disabledInit() {
 
-    /**
-     * This function is called periodically during operator control
-     */
-    public void teleopPeriodic() {
-        Scheduler.getInstance().run();
-        log();
-    }
-    
-    /**
-     * This function is called periodically during test mode
-     */
-    public void testPeriodic() {
-        LiveWindow.run();
-    }
-    
-    private void log() {
-    		drive.log();
-    }
+	}
+
+	/**
+	 * This function is called periodically during operator control
+	 */
+	public void teleopPeriodic() {
+		Scheduler.getInstance().run();
+		log();
+		if(!playing){
+			input = new RobotInput();
+			input.setButtonState(1, oi.getGamepad());
+			input.setLeftX(oi.getGamepadLeftX());
+			input.setLeftY(oi.getGamepadLeftY());
+			input.setRotation(oi.getGamepadRightX());
+		}
+		
+		if(recording){
+			inputs.add(input);
+		}
+		
+		for (int i = 1; i < 10; i++) {
+			if (oi.getGamepad().getRawButton(i)) {
+				System.out.println("Button " + i + ": " + oi.getGamepad().getRawButton(i));
+			}
+		}
+		
+	}
+
+	/**
+	 * This function is called periodically during test mode
+	 */
+	public void testPeriodic() {
+		LiveWindow.run();
+		log();
+	}
+
+	private void log() {
+		drive.log();
+		SensorSubsystem.log();
+	}
 }

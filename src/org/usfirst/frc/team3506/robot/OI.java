@@ -1,90 +1,90 @@
 package org.usfirst.frc.team3506.robot;
 
-import static org.usfirst.frc.team3506.robot.RobotMap.LEFT_JOYSTICK;
-import static org.usfirst.frc.team3506.robot.RobotMap.RIGHT_JOYSTICK;
+import static org.usfirst.frc.team3506.robot.RobotMap.GAMEPAD_PORT;
 
-import org.usfirst.frc.team3506.robot.commands.Abort;
-import org.usfirst.frc.team3506.robot.commands.DriveCommand;
-import org.usfirst.frc.team3506.robot.commands.DriveStraightCommand;
-import org.usfirst.frc.team3506.robot.commands.Reboot;
-import org.usfirst.frc.team3506.robot.commands.TestCommandGroup;
-import org.usfirst.frc.team3506.robot.commands.Turn360Command;
-import org.usfirst.frc.team3506.robot.commands.TurnLeftCommand;
-import org.usfirst.frc.team3506.robot.commands.TurnRightCommand;
+import org.usfirst.frc.team3506.robot.commands.ClearScheduleCommand;
+import org.usfirst.frc.team3506.robot.commands.catapult.ArmCatapultCommand;
+import org.usfirst.frc.team3506.robot.commands.catapult.ForwardRollersCommand;
+import org.usfirst.frc.team3506.robot.commands.catapult.LaunchCatapultCommand;
+import org.usfirst.frc.team3506.robot.commands.catapult.ReverseRollerCommand;
+import org.usfirst.frc.team3506.robot.commands.catapult.ToggleRollerDirectionCommand;
+import org.usfirst.frc.team3506.robot.commands.catapult.ToggleRollersCommand;
+import org.usfirst.frc.team3506.robot.commands.catapult.StopRollersCommand;
+import org.usfirst.frc.team3506.robot.commands.drive.ToggleSpeedCommand;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Command;
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
-    //// CREATING BUTTONS
-    // One type of button is a joystick button which is any button on a joystick.
-    // You create one by telling it which joystick it's on and which button
-    // number it is.
-    // Joystick stick = new Joystick(port);
-    // Button button = new JoystickButton(stick, buttonNumber);
-    
-    // There are a few additional built in buttons you can use. Additionally,
-    // by subclassing Button you can create custom triggers and bind those to
-    // commands the same as any other Button.
-    
-    //// TRIGGERING COMMANDS WITH BUTTONS
-    // Once you have a button, it's trivial to bind it to a button in one of
-    // three ways:
-    
-    // Start the command when the button is pressed and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenPressed(new ExampleCommand());
-    
-    // Run the command while the button is being held down and interrupt it once
-    // the button is released.
-    // button.whileHeld(new ExampleCommand());
-    
-    // Start the command when the button is released  and let it run the command
-    // until it is finished as determined by it's isFinished method.
-    // button.whenReleased(new ExampleCommand());
-	
-	
-	private Joystick leftJoy;
-	private Joystick rightJoy;
+	//private Joystick leftJoy;
+	//private Joystick rightJoy;
+	private Joystick gamepad;
 	
 	public OI() {
-		leftJoy = new Joystick(LEFT_JOYSTICK);
-		rightJoy = new Joystick(RIGHT_JOYSTICK);
+		//leftJoy = new Joystick(LEFT_JOYSTICK);
+		//rightJoy = new Joystick(RIGHT_JOYSTICK);
+		gamepad = new Joystick(GAMEPAD_PORT);
+
+		setJoystickButtonCommand(gamepad, RobotMap.RIGHT_STICK_BUTTON, new ClearScheduleCommand());
+//		setJoystickButtonCommand(gamepad, 3, new RecordCommand());
+//		setJoystickButtonCommand(gamepad, 4, new SaveRecordingCommand());
+//		setJoystickButtonCommand(gamepad, 2, new LoadRecordingCommand());
 		
-		JoystickButton button10 = new JoystickButton(leftJoy, 10);
-		button10.whenPressed(new TurnRightCommand());
+		setJoystickButtonCommand(gamepad, RobotMap.Y_BUTTON, new ToggleSpeedCommand());
+		//setJoystickButtonCommand(gamepad, RobotMap.START_BUTTON, new ReverseRollerCommand());
+		setJoystickButtonCommand(gamepad, RobotMap.A_BUTTON, new ForwardRollersCommand());
 		
-		JoystickButton button7 = new JoystickButton(leftJoy, 4);
-		button7.whenPressed(new TurnLeftCommand());
-		
-		JoystickButton button3 = new JoystickButton(leftJoy, 5);
-		button3.whenPressed(new DriveStraightCommand());
-		
-		JoystickButton button2 = new JoystickButton(leftJoy, 2);
-		button2.whenPressed(new TestCommandGroup());
-		
-		JoystickButton button8 = new JoystickButton(leftJoy, 8);
-		button8.whenPressed(new Reboot());
-		
-		JoystickButton button9 = new JoystickButton(leftJoy, 9);
-		button9.whenPressed(new DriveCommand());
-		
-		JoystickButton button11 = new JoystickButton(leftJoy, 11);
-		button11.whenPressed(new Turn360Command());
+		//setJoystickButtonCommand(gamepad, RobotMap.B_BUTTON, new StopRollersCommand());
+		setJoystickButtonCommand(gamepad, RobotMap.B_BUTTON, new ReverseRollerCommand());
+		setJoystickButtonCommand(gamepad, RobotMap.LEFT_SHOULDER_BUTTON, new LaunchCatapultCommand());
+		setJoystickButtonCommand(gamepad, RobotMap.RIGHT_SHOULDER_BUTTON, new ArmCatapultCommand());
 	}
-	
-	public Joystick getLeftJoy() {
+
+	/*public Joystick getLeftJoy() {
 		return leftJoy;
 	}
-	
+
 	public Joystick getRightJoy() {
 		return rightJoy;
 	}
+	*/
+	public Joystick getGamepad(){
+		return gamepad;
+	}
 	
+	public double getGamepadLeftX(){
+		return getGamepadAxis(RobotMap.LEFT_ANALOG_X);
+	}
 	
-}
+	public double getGamepadLeftY(){
+		return getGamepadAxis(RobotMap.LEFT_ANALOG_Y);
+	}
+	
+	public double getGamepadRightX() {
+		return getGamepadAxis(RobotMap.RIGHT_ANALOG_X);
+	}
+	
+	public double getGamepadAxis(int axis){
+		return joyMod(gamepad.getRawAxis(axis));
+	}
+	
+	public double joyMod(double joyVal) {
+		if(Math.abs(joyVal)<=0.05){
+			return 0;
+		} else{
+			return joyVal*RobotMap.JOYSTICK_NORMAL_MOD;
+		}
+		//return joyVal * RobotMap.JOYSTICK_NORMAL_MOD;
+	}
 
+	private void setJoystickButtonCommand(Joystick joystick, int button,
+			Command command) {
+		new JoystickButton(joystick, button).whenPressed(command);
+	}
+
+}

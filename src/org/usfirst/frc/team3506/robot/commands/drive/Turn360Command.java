@@ -1,7 +1,7 @@
 /**
  * 
  */
-package org.usfirst.frc.team3506.robot.commands;
+package org.usfirst.frc.team3506.robot.commands.drive;
 
 import org.usfirst.frc.team3506.robot.Robot;
 
@@ -11,9 +11,9 @@ import edu.wpi.first.wpilibj.command.Command;
  * @author acampbell
  *
  */
-public class DriveCommand extends Command {
+public class Turn360Command extends Command {
 
-	public DriveCommand() {
+	public Turn360Command() {
 		requires(Robot.drive);
 	}
 	
@@ -22,7 +22,7 @@ public class DriveCommand extends Command {
 	 */
 	@Override
 	protected void initialize() {
-
+		setTimeout(2);
 	}
 
 	/* (non-Javadoc)
@@ -30,7 +30,7 @@ public class DriveCommand extends Command {
 	 */
 	@Override
 	protected void execute() {
-		Robot.drive.userDrive();
+		Robot.drive.rightTurn();
 	}
 
 	/* (non-Javadoc)
@@ -38,7 +38,7 @@ public class DriveCommand extends Command {
 	 */
 	@Override
 	protected boolean isFinished() {
-		return false;
+		return isTimedOut();
 	}
 
 	/* (non-Javadoc)
@@ -46,7 +46,7 @@ public class DriveCommand extends Command {
 	 */
 	@Override
 	protected void end() {
-		Robot.drive.abort();
+		Robot.drive.stopMotors();
 	}
 
 	/* (non-Javadoc)

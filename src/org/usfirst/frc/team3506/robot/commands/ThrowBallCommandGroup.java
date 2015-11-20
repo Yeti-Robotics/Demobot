@@ -1,13 +1,17 @@
 package org.usfirst.frc.team3506.robot.commands;
 
+import org.usfirst.frc.team3506.robot.commands.catapult.ForwardRollersCommand;
+import org.usfirst.frc.team3506.robot.commands.catapult.OperateRollersCommand;
+import org.usfirst.frc.team3506.robot.commands.catapult.ToggleRollersCommand;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class TestCommandGroup extends CommandGroup {
+public class ThrowBallCommandGroup extends CommandGroup {
     
-    public  TestCommandGroup() {
+    public  ThrowBallCommandGroup() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -24,10 +28,7 @@ public class TestCommandGroup extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	
-    	addSequential(new DriveStraightCommand());
-    	addSequential(new TurnRightCommand());
-    	addSequential(new TurnRightCommand());
-    	addSequential(new DriveStraightCommand());
+    	addSequential(new ForwardRollersCommand());
+    	addParallel(new OperateRollersCommand());
     }
 }
